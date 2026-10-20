@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parichit Ponia | B.Tech CSE Portfolio & C Programming Hub</title>
+  <title>Parichit Ponia | B.Tech CSE Portfolio &amp; Complete C Programming Hub</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +14,13 @@
     }
     .mono {
       font-family: 'JetBrains Mono', monospace;
+    }
+    .fade-in {
+      animation: fadeIn 0.2s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -27,9 +34,9 @@
     </div>
   </div>
 
-  <!-- Top Navigation Bar (Matching Friend's Portfolio Structure + C Topics Section) -->
-  <header class="bg-slate-900 text-white sticky top-0 z-40 shadow-md">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+  <!-- Top Navigation Bar -->
+  <header class="bg-slate-900 text-white sticky top-0 z-40 shadow-md border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="flex items-center justify-between h-16">
         <a href="#home" class="font-extrabold text-lg tracking-tight text-white flex items-center gap-2">
           <span class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-sm font-bold mono">&lt;/&gt;</span>
@@ -37,17 +44,20 @@
         </a>
 
         <!-- Desktop Nav Links -->
-        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-200">
+        <nav class="hidden lg:flex items-center gap-5 text-xs sm:text-sm font-medium text-slate-200">
           <a href="#home" class="hover:text-indigo-400 transition-colors">Home</a>
           <a href="#about" class="hover:text-indigo-400 transition-colors">About</a>
           <a href="#skills" class="hover:text-indigo-400 transition-colors">Skills</a>
-          <a href="#c-topics" class="text-amber-300 hover:text-amber-200 font-semibold transition-colors">C Programming</a>
+          <a href="#c-topics" class="text-amber-300 hover:text-amber-200 font-semibold transition-colors">C Code Hub</a>
+          <a href="#c-concepts" class="text-emerald-300 hover:text-emerald-200 font-semibold transition-colors">What Every Topic Does</a>
+          <a href="#c-operators" class="text-sky-300 hover:text-sky-200 font-semibold transition-colors">Operators Guide</a>
+          <a href="#c-dryrun" class="hover:text-indigo-400 transition-colors">Loop Dry-Run &amp; Quiz</a>
           <a href="#projects" class="hover:text-indigo-400 transition-colors">Projects</a>
           <a href="#contact" class="hover:text-indigo-400 transition-colors">Contact</a>
         </nav>
 
         <!-- Mobile Menu Button -->
-        <button type="button" onclick="toggleMobileNav()" class="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800" aria-label="Toggle Menu">
+        <button type="button" onclick="toggleMobileNav()" class="lg:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800" aria-label="Toggle Menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -55,11 +65,14 @@
       </div>
 
       <!-- Mobile Dropdown Menu -->
-      <div id="mobile-nav" class="hidden md:hidden pb-4 pt-2 border-t border-slate-800 flex flex-col gap-2 text-sm">
+      <div id="mobile-nav" class="hidden lg:hidden pb-4 pt-2 border-t border-slate-800 flex flex-col gap-1.5 text-sm">
         <a href="#home" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg hover:bg-slate-800">Home</a>
-        <a href="#about" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg hover:bg-slate-800">About</a>
-        <a href="#skills" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg hover:bg-slate-800">Skills</a>
-        <a href="#c-topics" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg text-amber-300 font-semibold hover:bg-slate-800">C Programming Topics</a>
+        <a href="#about" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg hover:bg-slate-800">About Me</a>
+        <a href="#skills" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg hover:bg-slate-800">My Skills</a>
+        <a href="#c-topics" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg text-amber-300 font-semibold hover:bg-slate-800">📚 C Programming Topics &amp; Code</a>
+        <a href="#c-concepts" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg text-emerald-300 font-semibold hover:bg-slate-800">🧭 What Every C Topic Does (Loops &amp; More)</a>
+        <a href="#c-operators" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg text-sky-300 font-semibold hover:bg-slate-800">➗ Complete C Operators Guide</a>
+        <a href="#c-dryrun" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg text-indigo-300 font-semibold hover:bg-slate-800">🔬 Interactive Loop Dry-Run &amp; Quiz</a>
         <a href="#projects" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg hover:bg-slate-800">Projects</a>
         <a href="#contact" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg hover:bg-slate-800">Contact</a>
       </div>
@@ -67,7 +80,7 @@
   </header>
 
   <!-- 1. HERO / INTRODUCTION SECTION -->
-  <section id="home" class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white py-16 sm:py-24 px-4">
+  <section id="home" class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white py-14 sm:py-20 px-4 border-b border-indigo-900/40">
     <div class="max-w-4xl mx-auto text-center space-y-5">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-200 text-xs font-semibold">
         <span>GLA University • B.Tech CSE (1st Year, 1st Semester)</span>
@@ -82,25 +95,40 @@
       </p>
 
       <p class="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
-        Learning Programming &amp; Logic Building 💻 — Focusing on C Language Fundamentals, Syntax, and Problem Solving.
+        Personal Portfolio &amp; Interactive <strong>C Language Learning Companion</strong> 💻 — Explore what every C topic does, master C operators with live examples, trace <code class="mono text-amber-300">while</code> loops step by step, and revise 1st-semester concepts cleanly by category.
       </p>
 
-      <div class="pt-4 flex flex-wrap items-center justify-center gap-3">
-        <a href="#c-topics" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow transition-colors">
-          Explore C Programming Notes 📖
+      <div class="pt-3 flex flex-wrap items-center justify-center gap-3">
+        <a href="#c-concepts" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm shadow transition-colors">
+          What Every C Topic Does 🧭
         </a>
-        <a href="#projects" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 transition-colors">
-          View My Projects 🚀
+        <a href="#c-operators" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow transition-colors">
+          C Operators Guide ➗
+        </a>
+        <a href="#c-topics" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 transition-colors">
+          C Programs &amp; Notes 📖
         </a>
         <a href="#contact" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 transition-colors">
           Contact Me 📬
         </a>
       </div>
+
+      <!-- Quick Section Directory Pills -->
+      <div class="pt-6 max-w-3xl mx-auto">
+        <div class="p-3 rounded-2xl bg-slate-800/70 border border-slate-700/80 flex flex-wrap items-center justify-center gap-2 text-xs">
+          <span class="text-slate-400 font-semibold px-2">Quick Jump:</span>
+          <a href="#about" class="px-3 py-1 rounded-lg bg-slate-900/90 hover:bg-indigo-600 text-slate-200 hover:text-white transition-colors">👨‍🎓 About &amp; Skills</a>
+          <a href="#c-topics" class="px-3 py-1 rounded-lg bg-slate-900/90 hover:bg-indigo-600 text-amber-300 hover:text-white transition-colors">📚 Studied C Programs (Up to while)</a>
+          <a href="#c-concepts" class="px-3 py-1 rounded-lg bg-slate-900/90 hover:bg-indigo-600 text-emerald-300 hover:text-white transition-colors">🔄 Loops &amp; All C Concepts Explained</a>
+          <a href="#c-operators" class="px-3 py-1 rounded-lg bg-slate-900/90 hover:bg-indigo-600 text-sky-300 hover:text-white transition-colors">➗ Operators &amp; Live Tester</a>
+          <a href="#c-dryrun" class="px-3 py-1 rounded-lg bg-slate-900/90 hover:bg-indigo-600 text-purple-300 hover:text-white transition-colors">🔬 Loop Dry-Run &amp; Quiz</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Main Content Container -->
-  <main class="max-w-5xl w-full mx-auto px-4 sm:px-6 py-12 space-y-16 flex-1">
+  <main class="max-w-6xl w-full mx-auto px-4 sm:px-6 py-12 space-y-16 flex-1">
 
     <!-- 2. ABOUT ME SECTION -->
     <section id="about" class="scroll-mt-20">
@@ -109,7 +137,7 @@
           <span>👨‍🎓</span> About Me
         </h2>
         <p class="mt-4 text-slate-700 leading-relaxed text-base">
-          I am <strong>Parichit Ponia</strong>, a first-year <strong>B.Tech Computer Science &amp; Engineering (CSE)</strong> student at <strong>GLA University</strong>. I am passionate about computer programming, software technology, and building clean websites. In my first semester, I am actively learning <strong>C Language</strong> (Variables, Data Types, Conditional Statements, and <code>while</code> Loops) and building a strong programming foundation.
+          I am <strong>Parichit Ponia</strong>, a first-year <strong>B.Tech Computer Science &amp; Engineering (CSE)</strong> student at <strong>GLA University</strong>. I am passionate about computer programming, software technology, and building structured, helpful web projects. In my first semester, I have studied <strong>C Language</strong> up to the <code class="mono font-semibold text-indigo-700">while</code> loop (Header Files, Data Types, Variables, <code class="mono">printf</code>/<code class="mono">scanf</code>, Operators, <code class="mono">if-else</code> Decision Making, and <code class="mono">while</code> Loops), and created this website as both my personal portfolio and an organized C Programming reference guide for students.
         </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 pt-6 border-t border-slate-100 text-sm">
@@ -123,7 +151,7 @@
           </div>
           <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
             <div class="text-xs font-semibold text-slate-500 uppercase">Current Focus</div>
-            <div class="font-bold text-indigo-700 mt-0.5">C Programming &amp; Web Dev</div>
+            <div class="font-bold text-indigo-700 mt-0.5">C Language (Up to while Loop)</div>
           </div>
         </div>
       </div>
@@ -137,60 +165,81 @@
       <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
           <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-600 to-blue-700 text-white flex items-center justify-center font-extrabold text-2xl mono shadow-md">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-600 to-blue-700 text-white flex items-center justify-center font-extrabold text-2xl mono shadow-md shrink-0">
               C
             </div>
             <div>
-              <div class="flex items-center gap-2">
+              <div class="flex flex-wrap items-center gap-2">
                 <h3 class="font-extrabold text-slate-900 text-lg">C Language</h3>
                 <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">Currently Learning (Sem 1)</span>
               </div>
               <p class="text-sm text-slate-600 mt-1 leading-relaxed">
-                Currently studying syllabus up to Loops: Variables, Data Types, Arithmetic/Logical Operators, if-else Conditions, and <code>while</code> Loops.
+                Currently studying 1st-semester C syllabus up to Loops: Program Structure, Variables &amp; Data Types, Operators, <code class="mono">if-else</code> Conditions, and <code class="mono">while</code> Loops.
               </p>
             </div>
           </div>
-          <a href="#c-topics" class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold text-xs border border-indigo-200 transition-colors whitespace-nowrap">
-            View Topics &amp; Code ↓
-          </a>
+          <div class="flex flex-wrap gap-2">
+            <a href="#c-topics" class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold text-xs border border-indigo-200 transition-colors whitespace-nowrap">
+              Studied Code Examples ↓
+            </a>
+            <a href="#c-operators" class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-700 font-semibold text-xs border border-sky-200 transition-colors whitespace-nowrap">
+              Operators Guide ↓
+            </a>
+          </div>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-slate-100 text-xs">
-          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
-            <div class="font-bold text-slate-900">Basic Structure &amp; I/O</div>
-            <div class="text-slate-500 mt-0.5">#include, main(), printf, scanf</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-6 pt-6 border-t border-slate-100 text-xs">
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-slate-900">1. Basic Structure &amp; I/O</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Studied</span>
+            </div>
+            <div class="text-slate-600 mt-1"><code class="mono">#include &lt;stdio.h&gt;</code>, <code class="mono">main()</code>, <code class="mono">printf()</code>, <code class="mono">scanf()</code></div>
           </div>
-          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
-            <div class="font-bold text-slate-900">Data Types &amp; Variables</div>
-            <div class="text-slate-500 mt-0.5">int, float, char, format specifiers</div>
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-slate-900">2. Data Types &amp; Operators</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Studied</span>
+            </div>
+            <div class="text-slate-600 mt-1"><code class="mono">int</code>, <code class="mono">float</code>, <code class="mono">char</code>, Arithmetic, Relational &amp; Logical</div>
           </div>
-          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
-            <div class="font-bold text-slate-900">Decision Making</div>
-            <div class="text-slate-500 mt-0.5">if, if-else, nested if conditions</div>
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-slate-900">3. Decision Making</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Studied</span>
+            </div>
+            <div class="text-slate-600 mt-1"><code class="mono">if</code>, <code class="mono">if-else</code>, <code class="mono">else-if</code> ladder, nested conditions</div>
           </div>
-          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
-            <div class="font-bold text-indigo-700">while Loop (Current Topic)</div>
-            <div class="text-slate-500 mt-0.5">Initialization, Condition, Increment</div>
+          <div class="p-3.5 rounded-xl bg-indigo-50/60 border border-indigo-200">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-indigo-900">4. while Loop</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-600 text-white">Current Topic</span>
+            </div>
+            <div class="text-indigo-800 mt-1">Entry-controlled loop: Initialization, Condition, Update</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 4. C PROGRAMMING INFORMATION & STUDY HUB SECTION -->
+    <!-- 4. C PROGRAMMING STUDIED TOPICS & CODE HUB (UP TO WHILE LOOP) -->
     <section id="c-topics" class="scroll-mt-20 space-y-6">
       <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
           <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full">1st Semester Study Hub</span>
-            <h2 class="text-2xl font-bold text-slate-900 mt-2">📚 C Programming Important Topics &amp; Code Examples</h2>
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full border border-indigo-200">Part 1 • Topics Covered in Class So Far</span>
+            <h2 class="text-2xl font-bold text-slate-900 mt-2">📚 C Programming Studied Topics &amp; Working Code Examples</h2>
             <p class="text-sm text-slate-600 mt-1">
-              Quick revision notes and working C program examples for B.Tech 1st-year students. Click any topic filter or copy the code snippets.
+              Detailed explanations, key syntax rules, working C code, and expected outputs for every topic taught up to the <code class="mono font-semibold text-indigo-700">while</code> loop.
             </p>
+          </div>
+          <!-- Live Search Input for Topics -->
+          <div class="w-full md:w-64 shrink-0">
+            <input type="text" id="c-topic-search" oninput="renderCTopics()" placeholder="🔍 Search studied topics..." class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
           </div>
         </div>
 
         <!-- Topic Filter Buttons (Syllabus up to while loop) -->
-        <div class="flex flex-wrap gap-2">
+        <div class="flex flex-wrap items-center gap-2">
           <button type="button" onclick="filterCTopics('all')" id="cbtn-all" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white transition-colors">All Topics (6)</button>
           <button type="button" onclick="filterCTopics('basics')" id="cbtn-basics" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">Basics &amp; Variables</button>
           <button type="button" onclick="filterCTopics('conditions')" id="cbtn-conditions" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">if-else Conditions</button>
@@ -198,65 +247,347 @@
         </div>
 
         <!-- C Programming Topic Cards Grid (Studied So Far: Up to while Loop) -->
-        <div id="c-topics-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div id="c-topics-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- Populated dynamically via JS -->
         </div>
 
-        <!-- Upcoming Syllabus Topics (Will Learn Next) -->
-        <div class="p-5 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-3">
+        <!-- Upcoming Syllabus Topics Summary Banner -->
+        <div class="p-5 rounded-2xl bg-amber-50/80 border border-amber-200 space-y-3">
           <div class="flex items-center justify-between flex-wrap gap-2">
             <h3 class="font-bold text-slate-900 text-sm sm:text-base flex items-center gap-2">
               <span>🔜</span> Topics I Will Learn Next (Upcoming in Semester 1)
             </h3>
-            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300">
-              Next in Class Syllabus
-            </span>
+            <a href="#c-concepts" onclick="switchConceptCategory('loops')" class="text-xs font-bold px-3 py-1 rounded-full bg-amber-600 hover:bg-amber-700 text-white transition-colors">
+              See Full Explanations Below ↓
+            </a>
           </div>
-          <p class="text-xs text-slate-600">
-            In our class so far, we have covered C fundamentals up to the <code class="mono font-semibold">while</code> loop. Here are the upcoming topics I will be learning next:
+          <p class="text-xs text-slate-700 leading-relaxed">
+            In our class so far, we have studied C fundamentals up to the <code class="mono font-semibold">while</code> loop. Below are the upcoming topics in our 1st-semester syllabus (you can also read how each of them works in Part 2 below!):
           </p>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 pt-1 text-xs">
-            <div class="p-3 rounded-xl bg-white border border-amber-200/80">
+            <div class="p-3.5 rounded-xl bg-white border border-amber-200/90 shadow-sm">
               <div class="font-bold text-slate-900">1. More Loops</div>
-              <div class="text-slate-500 mt-0.5"><code class="mono">do-while</code> &amp; <code class="mono">for</code> loops, pattern printing</div>
+              <div class="text-slate-600 mt-1"><code class="mono">for</code> loop, <code class="mono">do-while</code> loop, nested loops &amp; star patterns</div>
             </div>
-            <div class="p-3 rounded-xl bg-white border border-amber-200/80">
+            <div class="p-3.5 rounded-xl bg-white border border-amber-200/90 shadow-sm">
               <div class="font-bold text-slate-900">2. Arrays &amp; Strings</div>
-              <div class="text-slate-500 mt-0.5">1D &amp; 2D arrays, character strings</div>
+              <div class="text-slate-600 mt-1">1D &amp; 2D arrays (matrices), character arrays &amp; string functions</div>
             </div>
-            <div class="p-3 rounded-xl bg-white border border-amber-200/80">
-              <div class="font-bold text-slate-900">3. Functions</div>
-              <div class="text-slate-500 mt-0.5">User-defined functions &amp; recursion</div>
+            <div class="p-3.5 rounded-xl bg-white border border-amber-200/90 shadow-sm">
+              <div class="font-bold text-slate-900">3. Functions &amp; Recursion</div>
+              <div class="text-slate-600 mt-1">User-defined functions, call by value/reference &amp; recursion</div>
             </div>
-            <div class="p-3 rounded-xl bg-white border border-amber-200/80">
-              <div class="font-bold text-slate-900">4. Pointers &amp; Structs</div>
-              <div class="text-slate-500 mt-0.5">Memory addresses &amp; structures</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Interactive Mini C Output Simulator -->
-        <div class="p-5 rounded-2xl bg-slate-900 text-white space-y-4">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div>
-              <h3 class="font-bold text-base text-amber-300">⚡ Interactive C Demo: while Loop in Action (Counting &amp; Factorial)</h3>
-              <p class="text-xs text-slate-300">Enter any number below to test the logic of a 1st-semester C lab program right in the browser:</p>
-            </div>
-          </div>
-          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-            <input type="number" id="c-demo-input" value="5" min="0" max="20" oninput="runCDemo()" class="w-full sm:w-40 px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white mono text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter n (0-20)">
-            <button type="button" onclick="runCDemo()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-colors">
-              Run C Program Logic ▶
-            </button>
-            <div id="c-demo-output" class="flex-1 px-4 py-2 rounded-xl bg-black/50 border border-slate-800 mono text-xs text-emerald-400">
-              Output: n = 5 is ODD | Factorial (5!) = 120
+            <div class="p-3.5 rounded-xl bg-white border border-amber-200/90 shadow-sm">
+              <div class="font-bold text-slate-900">4. Pointers &amp; Structures</div>
+              <div class="text-slate-600 mt-1">Memory addresses (<code class="mono">*</code> and <code class="mono">&amp;</code>), <code class="mono">struct</code> &amp; file handling</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 5. MY PROJECTS SECTION -->
+    <!-- 5. NEW ORGANIZED SECTION: WHAT EVERY C TOPIC DOES (CATEGORIZED CONCEPT EXPLORER) -->
+    <section id="c-concepts" class="scroll-mt-20 space-y-6">
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">Part 2 • Categorized Concept Encyclopedia</span>
+            <h2 class="text-2xl font-bold text-slate-900 mt-2">🧭 What Every C Topic Does (Organized by Category)</h2>
+            <p class="text-sm text-slate-600 mt-1">
+              Click any category tab below to understand <strong>what each C statement or topic does</strong>, <strong>when to use it</strong>, and <strong>how it works</strong> — without any clutter.
+            </p>
+          </div>
+          <div class="flex items-center gap-2 text-xs">
+            <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200">✅ Taught in Class</span>
+            <span class="px-2.5 py-1 rounded-full bg-amber-50 text-amber-800 font-semibold border border-amber-200">🔜 Learn Next</span>
+          </div>
+        </div>
+
+        <!-- Clean Category Tabs for C Concepts -->
+        <div class="flex flex-wrap gap-2 p-1.5 rounded-2xl bg-slate-100 border border-slate-200/80">
+          <button type="button" onclick="switchConceptCategory('loops')" id="concept-tab-loops" class="flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-sm transition-all">
+            🔄 1. All Loops (while, for, do-while)
+          </button>
+          <button type="button" onclick="switchConceptCategory('branching')" id="concept-tab-branching" class="flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-bold text-slate-700 hover:bg-white/70 transition-all">
+            🔀 2. Decision Making (if-else, switch)
+          </button>
+          <button type="button" onclick="switchConceptCategory('fundamentals')" id="concept-tab-fundamentals" class="flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-bold text-slate-700 hover:bg-white/70 transition-all">
+            🧱 3. Core Building Blocks &amp; I/O
+          </button>
+          <button type="button" onclick="switchConceptCategory('specifiers')" id="concept-tab-specifiers" class="flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-bold text-slate-700 hover:bg-white/70 transition-all">
+            📋 4. Format Specifiers &amp; Data Types
+          </button>
+          <button type="button" onclick="switchConceptCategory('upcoming')" id="concept-tab-upcoming" class="flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-bold text-slate-700 hover:bg-white/70 transition-all">
+            🚀 5. Upcoming Topics (Arrays to Pointers)
+          </button>
+          <button type="button" onclick="switchConceptCategory('mistakes')" id="concept-tab-mistakes" class="flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-bold text-slate-700 hover:bg-white/70 transition-all">
+            ⚠️ 6. Common Mistakes &amp; Exam Tips
+          </button>
+        </div>
+
+        <!-- Dynamic Concept Category Description Banner -->
+        <div id="concept-category-banner" class="p-4 rounded-xl bg-indigo-50/70 border border-indigo-200/80 text-xs sm:text-sm text-indigo-950 font-medium">
+          <!-- Populated via JS -->
+        </div>
+
+        <!-- Concept Cards Container -->
+        <div id="concept-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- Populated via JS -->
+        </div>
+
+        <!-- Side-by-Side Comparison Table (Shown when 'loops' tab is active) -->
+        <div id="loops-comparison-box" class="pt-2">
+          <div class="rounded-2xl border border-slate-200 overflow-hidden">
+            <div class="bg-slate-900 text-white px-5 py-3.5 flex items-center justify-between flex-wrap gap-2">
+              <h3 class="font-bold text-sm sm:text-base">📊 Quick Comparison: <code class="mono text-amber-300">while</code> vs <code class="mono text-sky-300">for</code> vs <code class="mono text-emerald-300">do-while</code> Loop</h3>
+              <span class="text-xs text-slate-300">Most Important 1st-Semester Exam &amp; Viva Table</span>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                <thead>
+                  <tr class="bg-slate-100 border-b border-slate-200 text-slate-700 font-bold">
+                    <th class="py-3 px-4">Feature</th>
+                    <th class="py-3 px-4 text-indigo-700"><code class="mono">while</code> Loop (Studied ✅)</th>
+                    <th class="py-3 px-4 text-sky-700"><code class="mono">for</code> Loop (Learn Next 🔜)</th>
+                    <th class="py-3 px-4 text-amber-800"><code class="mono">do-while</code> Loop (Learn Next 🔜)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 bg-white">
+                  <tr>
+                    <td class="py-3 px-4 font-semibold text-slate-900">Loop Type</td>
+                    <td class="py-3 px-4"><strong>Entry-Controlled</strong> (checks condition at the start)</td>
+                    <td class="py-3 px-4"><strong>Entry-Controlled</strong> (checks condition at the start)</td>
+                    <td class="py-3 px-4"><strong>Exit-Controlled</strong> (checks condition at the end)</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-semibold text-slate-900">Minimum Executions</td>
+                    <td class="py-3 px-4"><strong>0 times</strong> (if condition is false initially, body never runs)</td>
+                    <td class="py-3 px-4"><strong>0 times</strong> (if condition is false initially, body never runs)</td>
+                    <td class="py-3 px-4"><strong>At least 1 time</strong> (body runs once before condition is checked)</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-semibold text-slate-900">Syntax Structure</td>
+                    <td class="py-3 px-4 mono text-xs">init;<br>while (condition) {<br>&nbsp;&nbsp;body; update;<br>}</td>
+                    <td class="py-3 px-4 mono text-xs">for (init; cond; update) {<br>&nbsp;&nbsp;body;<br>}</td>
+                    <td class="py-3 px-4 mono text-xs">init;<br>do {<br>&nbsp;&nbsp;body; update;<br>} while (condition);</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-semibold text-slate-900">Best Used When</td>
+                    <td class="py-3 px-4">Number of iterations is <strong>not fixed</strong> in advance or reading until a condition stops</td>
+                    <td class="py-3 px-4">Exact number of iterations is <strong>known beforehand</strong> (e.g., 1 to 100)</td>
+                    <td class="py-3 px-4">You want a <strong>menu-driven program</strong> to run at least once before asking "Continue?"</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-semibold text-slate-900">Semicolon at End?</td>
+                    <td class="py-3 px-4">No semicolon after <code class="mono">while(cond)</code></td>
+                    <td class="py-3 px-4">No semicolon after <code class="mono">for(...)</code></td>
+                    <td class="py-3 px-4"><strong>Yes!</strong> Ends with a semicolon: <code class="mono">while(cond);</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. NEW ORGANIZED SECTION: COMPLETE C OPERATORS MASTER GUIDE & LIVE TESTER -->
+    <section id="c-operators" class="scroll-mt-20 space-y-6">
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-700 bg-sky-50 px-2.5 py-1 rounded-full border border-sky-200">Part 3 • Categorized Operators Reference &amp; Live Evaluator</span>
+            <h2 class="text-2xl font-bold text-slate-900 mt-2">➗ C Programming Operators — Uses, Rules &amp; Live Examples</h2>
+            <p class="text-sm text-slate-600 mt-1">
+              An operator is a symbol that tells the compiler to perform specific mathematical, relational, or logical operations. Select a category below to see every operator's meaning, rules, and examples.
+            </p>
+          </div>
+        </div>
+
+        <!-- Operator Category Tabs -->
+        <div class="flex flex-wrap gap-2">
+          <button type="button" onclick="switchOperatorTab('arithmetic')" id="optab-arithmetic" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-sm transition-colors">
+            1. Arithmetic (+, -, *, /, %)
+          </button>
+          <button type="button" onclick="switchOperatorTab('relational')" id="optab-relational" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">
+            2. Relational (==, !=, &gt;, &lt;, &gt;=, &lt;=)
+          </button>
+          <button type="button" onclick="switchOperatorTab('logical')" id="optab-logical" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">
+            3. Logical (&amp;&amp;, ||, !)
+          </button>
+          <button type="button" onclick="switchOperatorTab('assignment')" id="optab-assignment" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">
+            4. Assignment (=, +=, -=, *=, /=, %=)
+          </button>
+          <button type="button" onclick="switchOperatorTab('incdec')" id="optab-incdec" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">
+            5. Increment &amp; Decrement (++, --)
+          </button>
+          <button type="button" onclick="switchOperatorTab('special')" id="optab-special" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">
+            6. Bitwise &amp; Special (&amp;, |, ^, ?:, sizeof)
+          </button>
+        </div>
+
+        <!-- Selected Operator Category Explanation Header -->
+        <div id="operator-cat-summary" class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-700 leading-relaxed">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Operator Cards / Table Grid -->
+        <div id="operator-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Operator Precedence (Priority Order) Quick Strip -->
+        <div class="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-200 space-y-2">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h3 class="text-xs sm:text-sm font-bold text-indigo-950 flex items-center gap-1.5">
+              <span>🏆</span> Operator Precedence (Priority Order in C — Highest to Lowest)
+            </h3>
+            <span class="text-[11px] font-semibold text-indigo-700">Which operator executes first in an expression?</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-1.5 text-xs mono pt-1">
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-indigo-200 font-bold text-slate-900">1. () []</span>
+            <span class="text-indigo-400 font-bold">→</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-indigo-200 font-bold text-slate-900">2. ! ++ -- (Unary)</span>
+            <span class="text-indigo-400 font-bold">→</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-indigo-200 font-bold text-indigo-700">3. * / %</span>
+            <span class="text-indigo-400 font-bold">→</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-indigo-200 font-bold text-slate-900">4. + -</span>
+            <span class="text-indigo-400 font-bold">→</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-indigo-200 font-bold text-slate-900">5. &lt; &lt;= &gt; &gt;=</span>
+            <span class="text-indigo-400 font-bold">→</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-indigo-200 font-bold text-slate-900">6. == !=</span>
+            <span class="text-indigo-400 font-bold">→</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-indigo-200 font-bold text-emerald-700">7. &amp;&amp;</span>
+            <span class="text-indigo-400 font-bold">→</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-indigo-200 font-bold text-emerald-700">8. ||</span>
+            <span class="text-indigo-400 font-bold">→</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-indigo-200 font-bold text-rose-700">9. = += -=</span>
+          </div>
+        </div>
+
+        <!-- Interactive Live C Operator Sandbox Calculator -->
+        <div class="p-5 sm:p-6 rounded-2xl bg-slate-900 text-white space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-sky-400">Interactive C Expression Sandbox</span>
+              <h3 class="font-bold text-base sm:text-lg text-white mt-0.5">⚡ Test How C Operators Evaluate Two Numbers Live</h3>
+              <p class="text-xs text-slate-400">Change <code class="mono text-amber-300">int a</code> and <code class="mono text-amber-300">int b</code> below to see how C computes Arithmetic, Relational, Logical, and Bitwise expressions:</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <div>
+                <label for="op-input-a" class="block text-[11px] font-semibold text-slate-400">int a =</label>
+                <input type="number" id="op-input-a" value="15" min="-999" max="999" oninput="updateLiveOperatorSandbox()" class="w-24 px-3 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-white mono text-sm font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              </div>
+              <div>
+                <label for="op-input-b" class="block text-[11px] font-semibold text-slate-400">int b =</label>
+                <input type="number" id="op-input-b" value="4" min="-999" max="999" oninput="updateLiveOperatorSandbox()" class="w-24 px-3 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-white mono text-sm font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              </div>
+            </div>
+          </div>
+
+          <div id="live-operator-results" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. INTERACTIVE WHILE LOOP DRY-RUN VISUALIZER & 1ST-SEM QUIZ -->
+    <section id="c-dryrun" class="scroll-mt-20 space-y-6">
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-8">
+        <!-- Part A: Interactive while Loop Step-by-Step Dry Run Visualizer -->
+        <div class="space-y-5">
+          <div class="border-b border-slate-100 pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full border border-purple-200">Part 4 • Interactive Lab Dry-Run &amp; Self-Test</span>
+            <h2 class="text-2xl font-bold text-slate-900 mt-2">🔬 Interactive <code class="mono text-indigo-700">while</code> Loop Step-by-Step Dry-Run Visualizer</h2>
+            <p class="text-sm text-slate-600 mt-1">
+              In B.Tech 1st-semester labs and exams, teachers ask you to write a <strong>Dry-Run Trace Table</strong> showing how variables change in each step of a <code class="mono">while</code> loop. Pick a program and change <code class="mono">N</code> to see every iteration!
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+            <div class="flex-1">
+              <label for="dryrun-program-select" class="block text-xs font-bold text-slate-700 mb-1.5">Select 1st-Semester <code class="mono">while</code> Loop Program:</label>
+              <select id="dryrun-program-select" onchange="renderDryRunTable()" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 bg-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="sum">1. Sum of First N Natural Numbers (sum = sum + i)</option>
+                <option value="fact">2. Factorial of N (fact = fact * i)</option>
+                <option value="table">3. Multiplication Table of N (N * i)</option>
+                <option value="even">4. Check Even / Odd &amp; Print 1 to N</option>
+              </select>
+            </div>
+            <div class="w-full sm:w-44">
+              <label for="c-demo-input" class="block text-xs font-bold text-slate-700 mb-1.5">Input Number <code class="mono">n</code> (1–12):</label>
+              <input type="number" id="c-demo-input" value="5" min="1" max="12" oninput="runCDemo(); renderDryRunTable();" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 bg-white mono text-sm font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter n (1-12)">
+            </div>
+            <button type="button" onclick="runCDemo(); renderDryRunTable();" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs sm:text-sm transition-colors shrink-0">
+              Run C Program Logic ▶
+            </button>
+          </div>
+
+          <!-- Instant Output Bar (Preserves #c-demo-output) -->
+          <div id="c-demo-output" class="px-4 py-3 rounded-xl bg-slate-900 text-emerald-400 mono text-xs sm:text-sm font-semibold border border-slate-800">
+            while loop result: n = 5 (ODD) | Sum (1 to 5) = 15 | Factorial (5!) = 120
+          </div>
+
+          <!-- Code + Step-by-Step Dry Run Table -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+            <div class="lg:col-span-5 rounded-2xl bg-slate-900 text-slate-100 p-4 border border-slate-800 space-y-2">
+              <div class="flex items-center justify-between text-xs text-slate-400 border-b border-slate-800 pb-2">
+                <span class="font-bold text-amber-300">C Program Code Being Traced</span>
+                <span class="mono">while_loop.c</span>
+              </div>
+              <pre id="dryrun-code-box" class="mono text-xs leading-relaxed overflow-x-auto text-slate-100 pt-1"></pre>
+            </div>
+
+            <div class="lg:col-span-7 rounded-2xl border border-slate-200 overflow-hidden bg-white">
+              <div class="bg-slate-100 px-4 py-2.5 border-b border-slate-200 flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Step-by-Step Loop Execution Trace (Dry Run)</span>
+                <span id="dryrun-step-badge" class="text-xs font-semibold text-indigo-700">5 Iterations + Termination Check</span>
+              </div>
+              <div class="overflow-x-auto max-h-80">
+                <table class="w-full text-left border-collapse text-xs">
+                  <thead>
+                    <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 font-bold">
+                      <th class="py-2.5 px-3">Step / Iteration</th>
+                      <th class="py-2.5 px-3">Condition Check</th>
+                      <th class="py-2.5 px-3">Action Inside Loop Body</th>
+                      <th class="py-2.5 px-3">Next <code class="mono">i++</code></th>
+                    </tr>
+                  </thead>
+                  <tbody id="dryrun-table-body" class="divide-y divide-slate-100 mono">
+                    <!-- Populated via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Part B: Quick 1st-Semester C Viva & MCQ Self-Test -->
+        <div class="pt-6 border-t border-slate-200 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                <span>🎯</span> Quick C Programming Viva &amp; Lab Quiz (Up to <code class="mono text-indigo-700">while</code> Loop)
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600">Test your understanding of 1st-semester C concepts and operators. Click any option to check your answer immediately!</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <span id="quiz-score-badge" class="text-xs font-bold px-3 py-1.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">Score: 0 / 5</span>
+              <button type="button" onclick="resetCQuiz()" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-colors">
+                Reset Quiz ↺
+              </button>
+            </div>
+          </div>
+
+          <div id="c-quiz-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. MY PROJECTS SECTION -->
     <section id="projects" class="scroll-mt-20">
       <h2 class="text-2xl font-bold text-slate-900 mb-5 flex items-center gap-2">
         <span>🚀</span> My Projects
@@ -264,46 +595,46 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between">
           <div>
-            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">Web Development</span>
-            <h3 class="font-bold text-slate-900 text-base mt-3">🚀 My First Personal Website</h3>
+            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">Web Development &amp; C Hub</span>
+            <h3 class="font-bold text-slate-900 text-base mt-3">🚀 Personal Portfolio &amp; Interactive C Guide</h3>
             <p class="text-sm text-slate-600 mt-1.5 leading-relaxed">
-              A responsive personal portfolio and C programming study website built using HTML5, CSS3, and JavaScript, hosted on GitHub Pages.
+              A responsive portfolio and structured C programming companion featuring categorized topic explanations, a live C operator evaluator, and a <code class="mono text-xs">while</code> loop dry-run tracer.
             </p>
           </div>
           <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-emerald-700">
-            ✓ Live Project
+            ✓ Live Project on GitHub Pages
           </div>
         </div>
 
         <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between">
           <div>
             <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">C Programming Lab</span>
-            <h3 class="font-bold text-slate-900 text-base mt-3">💻 C Programming Mini Projects</h3>
+            <h3 class="font-bold text-slate-900 text-base mt-3">💻 1st-Semester C Lab Programs</h3>
             <p class="text-sm text-slate-600 mt-1.5 leading-relaxed">
-              Collection of 1st-semester C lab programs covering I/O, Even/Odd check, largest of 3 numbers, and while loop series (Multiplication table, Sum of N numbers).
+              Collection of 1st-semester C lab programs covering I/O, Arithmetic &amp; Relational operators, Even/Odd check, largest of 3 numbers, and <code class="mono text-xs">while</code> loop series.
             </p>
           </div>
           <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-indigo-600">
-            <a href="#c-topics" class="hover:underline">See Code Examples Above ↑</a>
+            <a href="#c-topics" class="hover:underline">Explore Code Examples Above ↑</a>
           </div>
         </div>
 
         <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between">
           <div>
             <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full">Upcoming</span>
-            <h3 class="font-bold text-slate-900 text-base mt-3">🔨 More Projects Coming Soon...</h3>
+            <h3 class="font-bold text-slate-900 text-base mt-3">🔨 Next in Semester 1 Syllabus</h3>
             <p class="text-sm text-slate-600 mt-1.5 leading-relaxed">
-              Upcoming topics in our syllabus: do-while and for loops, pattern printing, arrays, and functions.
+              Expanding our C lab repository as we cover <code class="mono text-xs">for</code> and <code class="mono text-xs">do-while</code> loops, pattern printing, 1D/2D arrays, strings, functions, and pointers.
             </p>
           </div>
-          <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
-            In Progress (Semester 1)
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-amber-700">
+            <a href="#c-concepts" onclick="switchConceptCategory('upcoming')" class="hover:underline">Preview Upcoming Concepts ↑</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 6. CONTACT ME SECTION -->
+    <!-- 9. CONTACT ME SECTION -->
     <section id="contact" class="scroll-mt-20">
       <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
         <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
@@ -342,65 +673,471 @@
 
   <!-- FOOTER -->
   <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800">
-    <div class="max-w-5xl mx-auto px-4">
-      © 2026 Parichit Ponia | B.Tech CSE | GLA University
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div>© 2026 Parichit Ponia | B.Tech CSE (1st Year, Sem 1) | GLA University</div>
+      <div class="text-slate-500">Built with HTML5, Tailwind CSS &amp; Vanilla JavaScript</div>
     </div>
   </footer>
 
   <!-- JavaScript Logic -->
   <script>
+    // =========================================================================
+    // 1. STUDIED C TOPICS (UP TO WHILE LOOP) WITH DETAILED EXPLANATIONS
+    // =========================================================================
     const C_TOPICS = [
       {
         id: 'topic-1',
         cat: 'basics',
         badge: '1. Basic Structure',
         title: 'Structure of a C Program & Header Files',
-        desc: 'Every program includes header files like <stdio.h> and execution starts inside the main() function.',
-        code: `#include <stdio.h>\n\nint main() {\n    printf("Welcome to C Programming!\\n");\n    printf("Student: Parichit Ponia - GLA University\\n");\n    return 0;\n}`
+        desc: 'Every C program starts with preprocessor directives like #include <stdio.h> (Standard Input/Output header) and begins execution from the main() function.',
+        whatItDoes: 'Tells the compiler to load standard I/O functions (printf, scanf), executes statements top-to-bottom inside main(), and returns 0 to the operating system to signal successful termination.',
+        keyRules: [
+          '#include <stdio.h> is mandatory when using printf() or scanf().',
+          'Execution of every C program always starts from int main().',
+          'Every C statement inside main() must end with a semicolon (;).'
+        ],
+        code: `#include <stdio.h>\n\nint main() {\n    printf("Welcome to C Programming!\\n");\n    printf("Student: Parichit Ponia - GLA University\\n");\n    return 0;\n}`,
+        output: `Welcome to C Programming!\nStudent: Parichit Ponia - GLA University`
       },
       {
         id: 'topic-2',
         cat: 'basics',
         badge: '2. Data Types & I/O',
         title: 'Variables, Data Types & scanf() Input',
-        desc: 'Stores numbers and characters in memory. scanf() uses & (address-of) to read inputs from the user.',
-        code: `int roll;\nfloat marks;\nprintf("Enter Roll No and Marks: ");\nscanf("%d %f", &roll, &marks);\nprintf("Roll: %d, Marks: %.2f\\n", roll, marks);`
+        desc: 'Variables are named memory locations that store data. C requires you to declare the data type (int, float, char) of every variable before using it.',
+        whatItDoes: 'Allocates bytes in RAM (4 bytes for int/float, 1 byte for char). printf() formats and prints values on screen, while scanf() reads user keyboard input and stores it at the variable\'s memory address using &.',
+        keyRules: [
+          'Use %d for int, %f for float (%.2f for 2 decimal places), and %c for char.',
+          'Always put the address-of operator (&) before variable names in scanf("%d", &roll).',
+          'Variable names cannot start with a number or contain spaces.'
+        ],
+        code: `#include <stdio.h>\n\nint main() {\n    int roll = 42;\n    float marks = 91.50;\n    char grade = 'A';\n    printf("Roll: %d | Marks: %.2f | Grade: %c\\n", roll, marks, grade);\n    return 0;\n}`,
+        output: `Roll: 42 | Marks: 91.50 | Grade: A`
       },
       {
         id: 'topic-3',
         cat: 'basics',
-        badge: '3. Operators & Logic',
-        title: 'Arithmetic & Relational Operators',
-        desc: 'Includes operators for math (+, -, *, /, %) and comparison (==, !=, >, <, >=, <=) for condition checking.',
-        code: `int a = 15, b = 4;\nprintf("Sum = %d\\n", a + b);\nprintf("Quotient = %d\\n", a / b);\nprintf("Remainder (Modulus) = %d\\n", a % b);`
+        badge: '3. Operators & Expressions',
+        title: 'Arithmetic, Relational & Logical Operations',
+        desc: 'Operators perform calculations and condition checks. Arithmetic operators compute math values, while relational and logical operators return 1 (True) or 0 (False).',
+        whatItDoes: 'Computes addition (+), subtraction (-), multiplication (*), quotient (/), and remainder (%). Compares values so your program can make decisions.',
+        keyRules: [
+          'Integer division (15 / 4) gives 3 (drops the decimal part).',
+          'Modulus operator (15 % 4) gives the remainder 3 and works ONLY on integers.',
+          'Use == to check equality; single = is only for assignment!'
+        ],
+        code: `#include <stdio.h>\n\nint main() {\n    int a = 15, b = 4;\n    printf("Sum = %d, Quotient = %d\\n", a + b, a / b);\n    printf("Remainder (15 %% 4) = %d\\n", a % b);\n    printf("Is a > b? %d (1 means True)\\n", a > b);\n    return 0;\n}`,
+        output: `Sum = 19, Quotient = 3\nRemainder (15 % 4) = 3\nIs a > b? 1 (1 means True)`
       },
       {
         id: 'topic-4',
         cat: 'conditions',
         badge: '4. Decision Making',
-        title: 'if-else Conditional Statements',
-        desc: 'Executes different blocks of code based on whether a condition evaluates to true (non-zero) or false (0).',
-        code: `int num = 7;\nif (num % 2 == 0) {\n    printf("%d is Even\\n", num);\n} else {\n    printf("%d is Odd\\n", num);\n}`
+        title: 'if-else & else-if Ladder Statements',
+        desc: 'Allows the program to make decisions and execute different blocks of code depending on whether a condition is True (non-zero) or False (0).',
+        whatItDoes: 'Evaluates the condition inside parentheses. If True, the if-block runs and the else-block is skipped. If False, execution jumps directly to the else-block.',
+        keyRules: [
+          'Any non-zero value in C is treated as True; 0 is treated as False.',
+          'Combine multiple conditions using && (AND) or || (OR).',
+          'Never put a semicolon right after if (condition) — it terminates the if early!'
+        ],
+        code: `#include <stdio.h>\n\nint main() {\n    int num = 7;\n    if (num % 2 == 0) {\n        printf("%d is an Even number.\\n", num);\n    } else {\n        printf("%d is an Odd number.\\n", num);\n    }\n    return 0;\n}`,
+        output: `7 is an Odd number.`
       },
       {
         id: 'topic-5',
         cat: 'loops',
         badge: '5. while Loop Syntax',
-        title: 'while Loop (Entry-Controlled Loop)',
-        desc: 'A while loop checks the condition first. As long as the condition is true, the loop body continues executing.',
-        code: `// Print numbers from 1 to 5 using while loop\nint i = 1; // 1. Initialization\nwhile (i <= 5) { // 2. Condition\n    printf("%d ", i);\n    i++; // 3. Increment\n}`
+        title: 'while Loop (Entry-Controlled Iteration)',
+        desc: 'The while loop repeats a block of statements as long as a given condition remains True. It checks the condition BEFORE entering the loop body.',
+        whatItDoes: 'Follows 3 essential steps: (1) Initialization (int i = 1), (2) Condition check (while (i <= 5)), and (3) Update/Increment (i++) inside the loop body so the loop eventually stops.',
+        keyRules: [
+          'If the condition is False on the very first check, the loop body runs 0 times.',
+          'Forgetting the increment (i++) causes an Infinite Loop!',
+          'Best used when you want to repeat steps while a condition holds true.'
+        ],
+        code: `#include <stdio.h>\n\nint main() {\n    int i = 1;           // 1. Initialization\n    while (i <= 5) {     // 2. Condition Check\n        printf("%d ", i);\n        i++;             // 3. Update / Increment\n    }\n    return 0;\n}`,
+        output: `1 2 3 4 5 `
       },
       {
         id: 'topic-6',
         cat: 'loops',
-        badge: '6. while Loop Example',
-        title: 'Sum of First N Numbers using while Loop',
-        desc: 'Standard 1st-semester C lab problem demonstrating accumulation and condition termination with a while loop.',
-        code: `int n = 5, i = 1, sum = 0;\nwhile (i <= n) {\n    sum += i;\n    i++;\n}\nprintf("Sum of first %d natural numbers = %d", n, sum);`
+        badge: '6. while Loop Lab Problem',
+        title: 'Sum of First N Numbers & Digits using while Loop',
+        desc: 'Classic 1st-semester C lab program that uses an accumulator variable (sum = 0) inside a while loop to add numbers from 1 up to N.',
+        whatItDoes: 'Starts with sum = 0 and i = 1. In each iteration of the while loop, it adds the current value of i into sum (sum += i) and increments i by 1 until i exceeds n.',
+        keyRules: [
+          'Always initialize sum = 0 before starting the loop (otherwise it holds garbage value).',
+          'For multiplication/factorial, initialize fact = 1 instead of 0.',
+          'Trace each step using a Dry-Run table (see Part 4 below!).'
+        ],
+        code: `#include <stdio.h>\n\nint main() {\n    int n = 5, i = 1, sum = 0;\n    while (i <= n) {\n        sum = sum + i;   // Accumulate sum\n        i++;             // Move to next number\n    }\n    printf("Sum of first %d numbers = %d\\n", n, sum);\n    return 0;\n}`,
+        output: `Sum of first 5 numbers = 15`
       }
     ];
 
+    // =========================================================================
+    // 2. CATEGORIZED CONCEPT ENCYCLOPEDIA ("WHAT EVERY C TOPIC DOES")
+    // =========================================================================
+    const CONCEPT_CATEGORIES = {
+      loops: {
+        banner: '🔄 Loops in C allow you to execute a block of code repeatedly without copying and pasting lines. In our class we have studied the while loop; here is how while, for, do-while, break, and continue all work and compare:',
+        items: [
+          {
+            title: 'while Loop (Entry-Controlled Loop)',
+            status: 'taught',
+            statusLabel: '✅ Taught in Class',
+            syntax: 'int i = 1;\nwhile (i <= 5) {\n    printf("%d ", i);\n    i++;\n}',
+            whatItDoes: 'Checks the condition BEFORE running the loop body. If the condition is True, it executes the statements inside { }, updates the counter, and checks the condition again.',
+            whenToUse: 'Use when you want a simple loop with a clear condition, or when you do not know in advance how many times the user will enter input (e.g., extracting digits of a number using while (n > 0)).'
+          },
+          {
+            title: 'for Loop (Compact Entry-Controlled Loop)',
+            status: 'upcoming',
+            statusLabel: '🔜 Learn Next',
+            syntax: 'for (int i = 1; i <= 5; i++) {\n    printf("%d ", i);\n}',
+            whatItDoes: 'Does the exact same job as a while loop, but packs all 3 loop parts — (1) Initialization, (2) Condition, and (3) Increment/Decrement — into a single top line separated by semicolons.',
+            whenToUse: 'Use when you know the exact number of iterations beforehand (e.g., running a loop from 1 to N, printing star patterns, or traversing an array).'
+          },
+          {
+            title: 'do-while Loop (Exit-Controlled Loop)',
+            status: 'upcoming',
+            statusLabel: '🔜 Learn Next',
+            syntax: 'int i = 1;\ndo {\n    printf("%d ", i);\n    i++;\n} while (i <= 5);',
+            whatItDoes: 'Executes the loop body FIRST, and checks the condition at the bottom AFTER running the body. Even if the condition is False from the beginning, a do-while loop always runs at least once!',
+            whenToUse: 'Use for menu-driven programs (like an ATM or calculator menu) where you must show the menu on screen at least once before asking the user if they want to repeat.'
+          },
+          {
+            title: 'break & continue Statements (Loop Control)',
+            status: 'upcoming',
+            statusLabel: '🔜 Learn Next',
+            syntax: 'if (i == 3) continue; // Skips 3\nif (i == 8) break;    // Stops loop at 8',
+            whatItDoes: 'break immediately terminates the entire loop and jumps to the line after the loop. continue does NOT stop the loop — it only skips the remaining lines of the current iteration and jumps to the next iteration.',
+            whenToUse: 'Use break when searching for an item or stopping early on an error; use continue when you want to skip specific values (e.g., skipping division by zero).'
+          }
+        ]
+      },
+      branching: {
+        banner: '🔀 Decision Making & Branching statements allow your C program to test conditions and choose different execution paths instead of running every line blindly:',
+        items: [
+          {
+            title: 'Simple if & if-else Statement',
+            status: 'taught',
+            statusLabel: '✅ Taught in Class',
+            syntax: 'if (marks >= 40) {\n    printf("Passed");\n} else {\n    printf("Failed");\n}',
+            whatItDoes: 'Evaluates the test expression inside parentheses. If it evaluates to non-zero (True), the if block executes; otherwise (when it evaluates to 0 / False), the else block executes.',
+            whenToUse: 'Use whenever choosing between two mutually exclusive outcomes (Even vs Odd, Pass vs Fail, Positive vs Negative).'
+          },
+          {
+            title: 'else-if Ladder (Multiple Conditions)',
+            status: 'taught',
+            statusLabel: '✅ Taught in Class',
+            syntax: 'if (m >= 90) printf("Grade O");\nelse if (m >= 80) printf("Grade A+");\nelse if (m >= 70) printf("Grade A");\nelse printf("Grade B");',
+            whatItDoes: 'Tests multiple conditions in order from top to bottom. As soon as ONE condition is found True, its block executes and the rest of the ladder is skipped.',
+            whenToUse: 'Use when grading marks into multiple ranges, calculating electricity bill slabs, or checking > , < , and == 0.'
+          },
+          {
+            title: 'Nested if-else Statement',
+            status: 'taught',
+            statusLabel: '✅ Taught in Class',
+            syntax: 'if (a > b) {\n    if (a > c) printf("a is largest");\n    else printf("c is largest");\n}',
+            whatItDoes: 'Places one if-else statement inside another if or else block to test a secondary condition only after the outer condition passes.',
+            whenToUse: 'Use for finding the largest of 3 numbers without logical operators, or checking multi-step eligibility (e.g., Age >= 18 AND hasVoterID).'
+          },
+          {
+            title: 'switch-case Statement (Multi-Way Branching)',
+            status: 'upcoming',
+            statusLabel: '🔜 Learn Next',
+            syntax: 'switch (choice) {\n    case 1: printf("Add"); break;\n    case 2: printf("Subtract"); break;\n    default: printf("Invalid");\n}',
+            whatItDoes: 'Compares a single integer or character variable against multiple constant case values. Jumps directly to the matching case and runs until it hits a break statement.',
+            whenToUse: 'Use for menu-driven calculators (1 for +, 2 for -, 3 for *), weekday names (1=Monday to 7=Sunday), or vowel checking.'
+          }
+        ]
+      },
+      fundamentals: {
+        banner: '🧱 Core Building Blocks are the essential parts of every C program that you write in every single lab assignment:',
+        items: [
+          {
+            title: '#include <stdio.h> (Preprocessor Directive)',
+            status: 'taught',
+            statusLabel: '✅ Taught in Class',
+            syntax: '#include <stdio.h>\n#include <math.h>',
+            whatItDoes: 'Runs before compilation (preprocessing) and copies the declarations of standard library functions into your program so the compiler knows what printf() and scanf() are.',
+            whenToUse: 'Put #include <stdio.h> at the very top of every C file; add #include <math.h> when using sqrt() or pow().'
+          },
+          {
+            title: 'int main() & return 0; (Entry Point)',
+            status: 'taught',
+            statusLabel: '✅ Taught in Class',
+            syntax: 'int main() {\n    // Your code here\n    return 0;\n}',
+            whatItDoes: 'main() is the mandatory starting point where the CPU begins executing your program. return 0; sends an exit code of 0 back to the Operating System meaning "program ran without errors".',
+            whenToUse: 'Required once in every standalone C program.'
+          },
+          {
+            title: 'printf() — Formatted Console Output',
+            status: 'taught',
+            statusLabel: '✅ Taught in Class',
+            syntax: 'printf("Sum of %d and %d is %d\\n", a, b, a + b);',
+            whatItDoes: 'Prints text and variable values to the terminal screen. It replaces format specifiers (%d, %f, %c) with the matching variables listed after the comma.',
+            whenToUse: 'Use whenever displaying prompts, results, tables, or messages to the user.'
+          },
+          {
+            title: 'scanf() & Address-Of Operator (&)',
+            status: 'taught',
+            statusLabel: '✅ Taught in Class',
+            syntax: 'int age;\nscanf("%d", &age);',
+            whatItDoes: 'Pauses the program, waits for the user to type a value on the keyboard, and stores that value directly into the memory address of the variable (&age).',
+            whenToUse: 'Use whenever taking interactive user input in lab programs.'
+          }
+        ]
+      },
+      specifiers: {
+        banner: '📋 Format Specifiers, Escape Sequences & Data Types tell C how many bytes of memory to allocate and how to interpret binary bits as integers, decimals, or characters:',
+        items: [
+          {
+            title: 'Primary Data Types & Memory Sizes',
+            status: 'taught',
+            statusLabel: '✅ Taught in Class',
+            syntax: 'int a = 10;        // 4 bytes\nfloat b = 3.14f;   // 4 bytes\ndouble c = 3.14159;// 8 bytes\nchar ch = \'A\';     // 1 byte',
+            whatItDoes: 'int stores whole numbers (-2 billion to +2 billion); float stores decimals up to ~6 digits of precision; double stores high-precision decimals (~15 digits); char stores 1 single ASCII character.',
+            whenToUse: 'Declare before using any variable so the compiler reserves the exact number of bytes in RAM.'
+          },
+          {
+            title: 'Format Specifiers (%d, %f, %c, %lf)',
+            status: 'taught',
+            statusLabel: '✅ Taught in Class',
+            syntax: '%d  -> int\n%f  -> float (%.2f for 2 decimals)\n%lf -> double\n%c  -> char\n%s  -> string (char array)',
+            whatItDoes: 'Acts as a placeholder inside printf() and scanf() so C knows how to format binary data in memory as a human-readable integer, decimal, or character.',
+            whenToUse: 'Using the wrong specifier (like %d for a float) prints wrong garbage numbers!'
+          },
+          {
+            title: 'Escape Sequences (\\n, \\t, \\\\, \\")',
+            status: 'taught',
+            statusLabel: '✅ Taught in Class',
+            syntax: 'printf("Line 1\\nLine 2\\n");\nprintf("Roll\\tName\\tMarks\\n");',
+            whatItDoes: '\\n moves the cursor to a new line; \\t inserts a horizontal tab space for neat columns; \\\\ prints a literal backslash; \\" prints a double quote inside a string.',
+            whenToUse: 'Use inside printf("...") strings to format output cleanly.'
+          },
+          {
+            title: 'Type Conversion / Type Casting',
+            status: 'taught',
+            statusLabel: '✅ Taught in Class',
+            syntax: 'int a = 7, b = 2;\nfloat ans = (float)a / b; // Gives 3.50 instead of 3.00',
+            whatItDoes: 'Temporarily converts a variable from one data type to another during an expression so you do not lose decimal precision during integer division.',
+            whenToUse: 'Use when calculating averages or percentages from integer marks/totals.'
+          }
+        ]
+      },
+      upcoming: {
+        banner: '🚀 Upcoming 1st-Semester Syllabus Topics — Here is a simple, clear preview of what each upcoming topic after loops does and why we use it in C:',
+        items: [
+          {
+            title: 'Arrays (1D & 2D Matrices)',
+            status: 'upcoming',
+            statusLabel: '🔜 Learn Next',
+            syntax: 'int marks[5] = {85, 90, 78, 92, 88};\nprintf("First mark = %d", marks[0]);',
+            whatItDoes: 'Stores multiple values of the SAME data type together in continuous memory locations under a single name. Indexing always starts from 0 (marks[0] to marks[n-1]).',
+            whenToUse: 'Use when storing marks of 60 students or a 3x3 matrix without creating 60 separate variables!'
+          },
+          {
+            title: 'Strings (Character Arrays & <string.h>)',
+            status: 'upcoming',
+            statusLabel: '🔜 Learn Next',
+            syntax: 'char name[20] = "Parichit";\nprintf("Hello %s", name);',
+            whatItDoes: 'In C, a String is a 1D array of characters terminated by a special null character (\'\\0\'). Header <string.h> provides strlen(), strcpy(), strcat(), and strcmp().',
+            whenToUse: 'Use whenever storing and manipulating names, words, or sentences.'
+          },
+          {
+            title: 'Functions & Recursion (Modular Programming)',
+            status: 'upcoming',
+            statusLabel: '🔜 Learn Next',
+            syntax: 'int add(int x, int y) {\n    return x + y;\n}',
+            whatItDoes: 'Breaks a large C program into smaller, reusable blocks of code. Recursion is when a function calls itself to solve smaller versions of a problem (like factorial or Fibonacci).',
+            whenToUse: 'Use to avoid writing the same code repeatedly and to keep main() clean and readable.'
+          },
+          {
+            title: 'Pointers (* and &) & Structures (struct)',
+            status: 'upcoming',
+            statusLabel: '🔜 Learn Next',
+            syntax: 'int x = 10;\nint *ptr = &x; // ptr stores memory address of x',
+            whatItDoes: 'A Pointer (*ptr) stores the memory address of another variable, allowing direct memory access and call-by-reference. A Structure (struct) groups DIFFERENT data types (like int roll, char name[], float cgpa) into one custom record.',
+            whenToUse: 'Pointers are used for dynamic memory and array handling; struct is used for Student or Employee records.'
+          }
+        ]
+      },
+      mistakes: {
+        banner: '⚠️ Common 1st-Semester C Programming Mistakes & How to Fix Them — Avoid these 4 classic bugs in your C lab exams and viva:',
+        items: [
+          {
+            title: '1. Using = instead of == inside if() or while()',
+            status: 'taught',
+            statusLabel: '✅ Exam Alert',
+            syntax: '// WRONG: if (x = 5)  -> Assigns 5 to x (always True!)\n// RIGHT: if (x == 5) -> Compares x with 5',
+            whatItDoes: 'Single = assigns a value and returns that value (non-zero = True), so if (x = 5) always runs even when x was not 5!',
+            whenToUse: 'Always double-check that every equality check inside if (...) or while (...) uses double ==.'
+          },
+          {
+            title: '2. Accidental Semicolon after while(cond); or if(cond);',
+            status: 'taught',
+            statusLabel: '✅ Exam Alert',
+            syntax: '// WRONG: while (i <= 5); { printf("%d", i); i++; }\n// RIGHT: while (i <= 5)  { printf("%d", i); i++; }',
+            whatItDoes: 'Putting a semicolon right after while (i <= 5); creates an empty loop body that spins forever (Infinite Loop) and never reaches the { } block!',
+            whenToUse: 'Never put a semicolon after if(...), for(...), or while(...) headers (only do-while has a semicolon at the end).'
+          },
+          {
+            title: '3. Forgetting & in scanf() or Uninitialized sum = 0',
+            status: 'taught',
+            statusLabel: '✅ Exam Alert',
+            syntax: 'int n, sum = 0; // Always initialize sum = 0\nscanf("%d", &n); // Never forget & before n',
+            whatItDoes: 'In C, local variables are NOT automatically zero — they contain random garbage values in RAM until you set sum = 0. And scanf() requires &n to know where in RAM to store the input.',
+            whenToUse: 'Check every accumulator variable (sum = 0, fact = 1) and every scanf() call before compiling.'
+          },
+          {
+            title: '4. Integer Division Truncation (5 / 2 = 2)',
+            status: 'taught',
+            statusLabel: '✅ Exam Alert',
+            syntax: 'float avg = (float)sum / 5; // Cast to float for 2.50',
+            whatItDoes: 'Even if you store the result in a float variable (float x = 5 / 2;), C divides the two integers first (giving 2) and then stores 2.00!',
+            whenToUse: 'Write 5.0 / 2 or (float)sum / n whenever you need exact decimal answers.'
+          }
+        ]
+      }
+    };
+
+    // =========================================================================
+    // 3. COMPLETE C OPERATORS GUIDE DATA (6 CLEAN CATEGORIES)
+    // =========================================================================
+    const OPERATOR_CATEGORIES = {
+      arithmetic: {
+        summary: 'Arithmetic Operators perform mathematical calculations on numeric operands (int, float, double). Important Rule: In C, dividing two integers (15 / 4) always performs integer division and drops the decimal part (= 3).',
+        items: [
+          { symbol: '+', name: 'Addition', whatItDoes: 'Adds two numbers together.', example: '15 + 4', output: '19', rule: 'Works on int, float, double, and char (adds ASCII values).' },
+          { symbol: '-', name: 'Subtraction', whatItDoes: 'Subtracts the right operand from the left operand.', example: '15 - 4', output: '11', rule: 'Also used as unary minus (e.g., -a) to negate a number.' },
+          { symbol: '*', name: 'Multiplication', whatItDoes: 'Multiplies two operands.', example: '15 * 4', output: '60', rule: 'Has higher priority (precedence) than + and - in expressions.' },
+          { symbol: '/', name: 'Division (Quotient)', whatItDoes: 'Divides left operand by right operand.', example: '15 / 4  vs  15.0 / 4', output: '3  vs  3.75', rule: 'int / int gives int (truncates decimal). Make one operand float for exact decimal!' },
+          { symbol: '%', name: 'Modulus (Remainder)', whatItDoes: 'Returns the integer remainder after division.', example: '15 % 4', output: '3', rule: 'Works ONLY on integers! Useful for checking Even/Odd (n % 2 == 0) or last digit (n % 10).' }
+        ]
+      },
+      relational: {
+        summary: 'Relational (Comparison) Operators compare two values inside if, while, or for conditions. In C, if the comparison is True it returns 1; if False it returns 0.',
+        items: [
+          { symbol: '==', name: 'Equal To', whatItDoes: 'Checks if left and right values are exactly equal.', example: '15 == 4  |  4 == 4', output: '0 (False) | 1 (True)', rule: 'Never confuse == (comparison) with single = (assignment)!' },
+          { symbol: '!=', name: 'Not Equal To', whatItDoes: 'Returns 1 (True) if the two operands are different.', example: '15 != 4', output: '1 (True)', rule: 'Often used in while loops like while (choice != 0).' },
+          { symbol: '>', name: 'Greater Than', whatItDoes: 'Checks if left value is strictly greater than right value.', example: '15 > 4', output: '1 (True)', rule: 'Returns 0 if both numbers are equal (e.g., 4 > 4 is 0).' },
+          { symbol: '<', name: 'Less Than', whatItDoes: 'Checks if left value is strictly smaller than right value.', example: '15 < 4', output: '0 (False)', rule: 'Used to check upper bounds in loops: while (i < n).' },
+          { symbol: '>=', name: 'Greater Than or Equal', whatItDoes: 'Returns 1 if left value is greater than OR equal to right.', example: 'marks >= 40', output: '1 if marks is 40 or more', rule: 'Includes the boundary value itself.' },
+          { symbol: '<=', name: 'Less Than or Equal', whatItDoes: 'Returns 1 if left value is smaller than OR equal to right.', example: 'i <= 5', output: '1 for i = 1, 2, 3, 4, 5', rule: 'Most common condition in 1st-semester while loops!' }
+        ]
+      },
+      logical: {
+        summary: 'Logical Operators combine two or more relational conditions inside if() or while() statements. They always evaluate to 1 (True) or 0 (False).',
+        items: [
+          { symbol: '&&', name: 'Logical AND', whatItDoes: 'Returns 1 (True) ONLY if BOTH left and right conditions are True.', example: '(15 > 4) && (4 > 0)', output: '1 (True)', rule: 'Short-circuit rule: If the first condition is False, C does not even check the second condition!' },
+          { symbol: '||', name: 'Logical OR', whatItDoes: 'Returns 1 (True) if AT LEAST ONE of the conditions is True.', example: '(15 < 4) || (4 > 0)', output: '1 (True)', rule: 'Returns 0 (False) only when BOTH conditions are False.' },
+          { symbol: '!', name: 'Logical NOT', whatItDoes: 'Reverses the truth value: turns True (non-zero) into 0, and False (0) into 1.', example: '!(15 > 4)  |  !0', output: '0 (False) | 1 (True)', rule: 'Unary operator applied before a condition.' }
+        ]
+      },
+      assignment: {
+        summary: 'Assignment Operators store or update the value of a variable on the left side using the expression on the right side.',
+        items: [
+          { symbol: '=', name: 'Simple Assignment', whatItDoes: 'Copies the value from the right side into the variable on the left.', example: 'int x = 15;', output: 'x becomes 15', rule: 'Evaluates right-to-left: the expression on the right is calculated first.' },
+          { symbol: '+=', name: 'Add & Assign', whatItDoes: 'Adds right value to the variable and stores the result back.', example: 'sum += i;', output: 'Same as: sum = sum + i;', rule: 'Widely used in while loops for accumulating sums.' },
+          { symbol: '-=', name: 'Subtract & Assign', whatItDoes: 'Subtracts right value from the variable.', example: 'x -= 4;', output: 'Same as: x = x - 4;', rule: 'Clean shorthand for reducing a counter or balance.' },
+          { symbol: '*=', name: 'Multiply & Assign', whatItDoes: 'Multiplies the variable by the right value.', example: 'fact *= i;', output: 'Same as: fact = fact * i;', rule: 'Used in factorial and power calculation loops.' },
+          { symbol: '/= & %=', name: 'Divide / Mod & Assign', whatItDoes: 'Divides or takes remainder and updates the variable.', example: 'n /= 10;', output: 'Same as: n = n / 10;', rule: 'n /= 10 is used in while loops to remove the last digit of a number!' }
+        ]
+      },
+      incdec: {
+        summary: 'Increment (++) and Decrement (--) operators add 1 or subtract 1 from a variable. Exam Favourite: Pay close attention to Pre-increment (++i) vs Post-increment (i++):',
+        items: [
+          { symbol: '++i', name: 'Pre-Increment', whatItDoes: 'FIRST increases i by 1, THEN uses the new value in the expression.', example: 'int i = 5;\nint y = ++i;', output: 'i = 6, y = 6', rule: 'Rule: "Change first, Use later".' },
+          { symbol: 'i++', name: 'Post-Increment', whatItDoes: 'FIRST uses the current value of i in the expression, THEN increases i by 1.', example: 'int i = 5;\nint y = i++;', output: 'y = 5, i = 6', rule: 'Rule: "Use first, Change later". Most common in while Loops!' },
+          { symbol: '--i / i--', name: 'Pre & Post Decrement', whatItDoes: 'Decreases the variable by 1 (either before or after using its value).', example: 'int i = 5;\ni--;', output: 'i becomes 4', rule: 'Used in countdown while loops like while (n >= 1) { n--; }.' }
+        ]
+      },
+      special: {
+        summary: 'Bitwise & Special Operators work directly on binary bits (0s and 1s) or provide special C features like memory size and shorthand if-else:',
+        items: [
+          { symbol: '& , | , ^', name: 'Bitwise AND, OR, XOR', whatItDoes: 'Performs bit-by-bit logic on binary representations of integers.', example: '5 & 3 (0101 & 0011)', output: '1 (0001 in binary)', rule: 'Single & is Bitwise AND (or Address-of); Double && is Logical AND!' },
+          { symbol: '<< , >>', name: 'Bitwise Left & Right Shift', whatItDoes: 'Shifts binary bits left (multiplies by 2^k) or right (divides by 2^k).', example: '5 << 1  |  15 >> 1', output: '10  |  7', rule: 'Very fast hardware-level multiplication/division by powers of 2.' },
+          { symbol: '? :', name: 'Ternary (Conditional) Operator', whatItDoes: 'One-line shorthand for an if-else statement: (Condition) ? IfTrue : IfFalse.', example: 'max = (a > b) ? a : b;', output: 'Assigns larger of a and b', rule: 'Takes 3 operands, which is why it is called Ternary.' },
+          { symbol: 'sizeof()', name: 'sizeof Operator', whatItDoes: 'Returns the exact number of bytes occupied by a data type or variable in memory.', example: 'sizeof(int) | sizeof(char)', output: '4 | 1', rule: 'Evaluated at compile time.' },
+          { symbol: '& (Unary)', name: 'Address-Of Operator', whatItDoes: 'Returns the RAM memory address where a variable is stored.', example: 'scanf("%d", &num);', output: 'Passes memory location of num', rule: 'Essential for scanf() and Pointers.' }
+        ]
+      }
+    };
+
+    // =========================================================================
+    // 4. INTERACTIVE 1ST-SEMESTER C QUIZ QUESTIONS
+    // =========================================================================
+    const C_QUIZ_QUESTIONS = [
+      {
+        id: 'q1',
+        question: '1. What is the output of printf("%d", 15 / 4); in C?',
+        options: ['3.75', '3', '4', 'Compiler Error'],
+        correctIndex: 1,
+        explanation: 'In C, dividing an integer by an integer (15 / 4) performs integer division and truncates the decimal part, resulting in 3.'
+      },
+      {
+        id: 'q2',
+        question: '2. Which operator is used to find the remainder of a division in C?',
+        options: ['/ (Slash)', '% (Modulus)', '== (Equal)', '& (Ampersand)'],
+        correctIndex: 1,
+        explanation: 'The Modulus operator (%) returns the integer remainder after division (for example, 15 % 4 evaluates to 3).'
+      },
+      {
+        id: 'q3',
+        question: '3. In a while loop, if the condition is False on the very first check, how many times does the loop body execute?',
+        options: ['1 time', '0 times', 'Infinite times', '2 times'],
+        correctIndex: 1,
+        explanation: 'A while loop is an entry-controlled loop. It checks the condition before entering the body, so if the condition is initially False, it runs 0 times.'
+      },
+      {
+        id: 'q4',
+        question: '4. Why do we write &num inside scanf("%d", &num);?',
+        options: [
+          'To print the value of num',
+          'To pass the memory address of num where input should be stored',
+          'To multiply num by 2',
+          'To check if num is positive'
+        ],
+        correctIndex: 1,
+        explanation: 'The unary & (address-of) operator gives scanf() the exact RAM memory location of the variable so it can store the user\'s input there.'
+      },
+      {
+        id: 'q5',
+        question: '5. What happens if you forget to write i++ inside a while (i <= 5) loop when i starts at 1?',
+        options: [
+          'The loop stops after 1 run',
+          'It causes an Infinite Loop because i stays 1 forever (1 <= 5 is always True)',
+          'Compiler automatically adds i++',
+          'It prints 5 only'
+        ],
+        correctIndex: 1,
+        explanation: 'Without the update step (i++), the variable i remains 1 forever, so the condition (i <= 5) never becomes False, creating an infinite loop.'
+      },
+      {
+        id: 'q6',
+        question: '6. What is the difference between = and == in C?',
+        options: [
+          'Both are exactly the same',
+          '= assigns a value to a variable, whereas == compares two values for equality',
+          '== assigns a value, whereas = compares values',
+          '= is only for floats'
+        ],
+        correctIndex: 1,
+        explanation: 'Single = is the Assignment operator (x = 5), while double == is the Relational Equality operator (if (x == 5)) that returns 1 (True) or 0 (False).'
+      }
+    ];
+
+    // =========================================================================
+    // STATE & UI HELPERS
+    // =========================================================================
     let currentFilter = 'all';
+    let currentConceptCat = 'loops';
+    let currentOperatorTab = 'arithmetic';
+    let quizAnswers = {};
     let toastTimer = null;
 
     function showToast(msg) {
@@ -427,6 +1164,9 @@
       if (nav) nav.classList.add('hidden');
     }
 
+    // =========================================================================
+    // RENDER PART 1: STUDIED C TOPICS & CODE EXAMPLES
+    // =========================================================================
     function filterCTopics(cat) {
       currentFilter = cat;
       ['all', 'basics', 'conditions', 'loops'].forEach(c => {
@@ -445,16 +1185,33 @@
       if (!grid) return;
       grid.innerHTML = '';
 
-      const items = C_TOPICS.filter(t => currentFilter === 'all' || t.cat === currentFilter);
+      const searchInput = document.getElementById('c-topic-search');
+      const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+
+      const items = C_TOPICS.filter(t => {
+        const matchesCat = (currentFilter === 'all' || t.cat === currentFilter);
+        const matchesSearch = !query ||
+          t.title.toLowerCase().includes(query) ||
+          t.desc.toLowerCase().includes(query) ||
+          t.whatItDoes.toLowerCase().includes(query) ||
+          t.code.toLowerCase().includes(query);
+        return matchesCat && matchesSearch;
+      });
+
+      if (items.length === 0) {
+        grid.innerHTML = '<div class="col-span-2 p-8 text-center rounded-2xl bg-slate-50 border border-slate-200 text-slate-500 text-sm">No studied C topics matched your search. Try clearing the search box or clicking "All Topics (6)".</div>';
+        return;
+      }
+
       items.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'rounded-xl border border-slate-200 bg-slate-50/60 p-5 flex flex-col justify-between space-y-3';
+        card.className = 'rounded-2xl border border-slate-200 bg-slate-50/70 p-5 flex flex-col justify-between space-y-4 hover:border-indigo-200 transition-colors fade-in';
 
         const top = document.createElement('div');
-        top.className = 'space-y-1.5';
+        top.className = 'space-y-2.5';
 
         const header = document.createElement('div');
-        header.className = 'flex items-center justify-between';
+        header.className = 'flex items-center justify-between gap-2';
 
         const badge = document.createElement('span');
         badge.className = 'text-xs font-bold text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-200';
@@ -462,7 +1219,7 @@
 
         const copyBtn = document.createElement('button');
         copyBtn.type = 'button';
-        copyBtn.className = 'text-xs font-semibold text-indigo-600 hover:text-indigo-800';
+        copyBtn.className = 'text-xs font-semibold px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-indigo-600 hover:bg-indigo-50 transition-colors';
         copyBtn.textContent = 'Copy Code';
         copyBtn.addEventListener('click', () => copyCodeSnippet(item.code, item.title));
 
@@ -470,27 +1227,460 @@
         header.appendChild(copyBtn);
 
         const title = document.createElement('h3');
-        title.className = 'font-bold text-slate-900 text-base pt-1';
+        title.className = 'font-bold text-slate-900 text-base';
         title.textContent = item.title;
 
         const desc = document.createElement('p');
         desc.className = 'text-xs text-slate-600 leading-relaxed';
         desc.textContent = item.desc;
 
+        // "What It Does" box
+        const whatBox = document.createElement('div');
+        whatBox.className = 'p-3 rounded-xl bg-white border border-slate-200/90 text-xs space-y-1.5';
+        const whatTitle = document.createElement('div');
+        whatTitle.className = 'font-bold text-indigo-900';
+        whatTitle.textContent = '💡 How It Works:';
+        const whatText = document.createElement('p');
+        whatText.className = 'text-slate-600 leading-relaxed';
+        whatText.textContent = item.whatItDoes;
+        whatBox.appendChild(whatTitle);
+        whatBox.appendChild(whatText);
+
+        // Key Rules list
+        const rulesList = document.createElement('ul');
+        rulesList.className = 'space-y-1 text-xs text-slate-600 pl-4 list-disc';
+        item.keyRules.forEach(r => {
+          const li = document.createElement('li');
+          li.textContent = r;
+          rulesList.appendChild(li);
+        });
+
         top.appendChild(header);
         top.appendChild(title);
         top.appendChild(desc);
+        top.appendChild(whatBox);
+        top.appendChild(rulesList);
+
+        const bottom = document.createElement('div');
+        bottom.className = 'space-y-2';
 
         const pre = document.createElement('pre');
         pre.className = 'p-3.5 rounded-xl bg-slate-900 text-slate-100 mono text-xs overflow-x-auto leading-relaxed';
         pre.textContent = item.code;
 
+        const outBox = document.createElement('div');
+        outBox.className = 'px-3.5 py-2 rounded-xl bg-slate-800 text-emerald-400 mono text-[11px] overflow-x-auto';
+        outBox.textContent = 'Output: ' + item.output.replace(/\n/g, '  |  ');
+
+        bottom.appendChild(pre);
+        bottom.appendChild(outBox);
+
         card.appendChild(top);
-        card.appendChild(pre);
+        card.appendChild(bottom);
         grid.appendChild(card);
       });
     }
 
+    // =========================================================================
+    // RENDER PART 2: CATEGORIZED CONCEPT ENCYCLOPEDIA
+    // =========================================================================
+    function switchConceptCategory(catKey) {
+      currentConceptCat = catKey;
+      const keys = ['loops', 'branching', 'fundamentals', 'specifiers', 'upcoming', 'mistakes'];
+      keys.forEach(k => {
+        const btn = document.getElementById('concept-tab-' + k);
+        if (btn) {
+          btn.className = (k === catKey)
+            ? 'flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-sm transition-all'
+            : 'flex-1 min-w-[140px] py-2.5 px-3 rounded-xl text-xs font-bold text-slate-700 hover:bg-white/70 transition-all';
+        }
+      });
+
+      const data = CONCEPT_CATEGORIES[catKey];
+      const bannerEl = document.getElementById('concept-category-banner');
+      const containerEl = document.getElementById('concept-cards-container');
+      const loopsCompEl = document.getElementById('loops-comparison-box');
+
+      if (bannerEl && data) {
+        bannerEl.textContent = data.banner;
+      }
+
+      if (loopsCompEl) {
+        loopsCompEl.style.display = (catKey === 'loops') ? 'block' : 'none';
+      }
+
+      if (!containerEl || !data) return;
+      containerEl.innerHTML = '';
+
+      data.items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'rounded-2xl border border-slate-200 bg-slate-50/70 p-5 flex flex-col justify-between space-y-3 fade-in';
+
+        const top = document.createElement('div');
+        top.className = 'space-y-2';
+
+        const topRow = document.createElement('div');
+        topRow.className = 'flex items-center justify-between gap-2 flex-wrap';
+
+        const titleEl = document.createElement('h3');
+        titleEl.className = 'font-bold text-slate-900 text-base';
+        titleEl.textContent = item.title;
+
+        const badgeEl = document.createElement('span');
+        badgeEl.className = item.status === 'taught'
+          ? 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200'
+          : 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200';
+        badgeEl.textContent = item.statusLabel;
+
+        topRow.appendChild(titleEl);
+        topRow.appendChild(badgeEl);
+
+        const whatP = document.createElement('p');
+        whatP.className = 'text-xs text-slate-700 leading-relaxed';
+        whatP.innerHTML = '<strong class="text-slate-900">What it does:</strong> ' + item.whatItDoes;
+
+        const whenP = document.createElement('p');
+        whenP.className = 'text-xs text-indigo-900 bg-indigo-50/80 border border-indigo-100 p-2.5 rounded-xl leading-relaxed';
+        whenP.innerHTML = '<strong>When to use:</strong> ' + item.whenToUse;
+
+        top.appendChild(topRow);
+        top.appendChild(whatP);
+        top.appendChild(whenP);
+
+        const pre = document.createElement('pre');
+        pre.className = 'p-3 rounded-xl bg-slate-900 text-amber-200 mono text-xs overflow-x-auto leading-relaxed';
+        pre.textContent = item.syntax;
+
+        card.appendChild(top);
+        card.appendChild(pre);
+        containerEl.appendChild(card);
+      });
+    }
+
+    // =========================================================================
+    // RENDER PART 3: COMPLETE C OPERATORS GUIDE & LIVE SANDBOX
+    // =========================================================================
+    function switchOperatorTab(tabKey) {
+      currentOperatorTab = tabKey;
+      const keys = ['arithmetic', 'relational', 'logical', 'assignment', 'incdec', 'special'];
+      keys.forEach(k => {
+        const btn = document.getElementById('optab-' + k);
+        if (btn) {
+          btn.className = (k === tabKey)
+            ? 'px-3.5 py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-sm transition-colors'
+            : 'px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors';
+        }
+      });
+
+      const catData = OPERATOR_CATEGORIES[tabKey];
+      const summaryEl = document.getElementById('operator-cat-summary');
+      const gridEl = document.getElementById('operator-cards-grid');
+      if (summaryEl && catData) {
+        summaryEl.textContent = catData.summary;
+      }
+      if (!gridEl || !catData) return;
+      gridEl.innerHTML = '';
+
+      catData.items.forEach(op => {
+        const card = document.createElement('div');
+        card.className = 'rounded-2xl border border-slate-200 bg-white p-4 flex flex-col justify-between space-y-3 shadow-sm fade-in';
+
+        const top = document.createElement('div');
+        top.className = 'space-y-2';
+
+        const header = document.createElement('div');
+        header.className = 'flex items-center gap-3';
+
+        const symBox = document.createElement('div');
+        symBox.className = 'px-3 py-1.5 rounded-xl bg-slate-900 text-amber-300 mono font-extrabold text-sm shadow-sm';
+        symBox.textContent = op.symbol;
+
+        const nameEl = document.createElement('div');
+        nameEl.className = 'font-bold text-slate-900 text-sm';
+        nameEl.textContent = op.name;
+
+        header.appendChild(symBox);
+        header.appendChild(nameEl);
+
+        const descEl = document.createElement('p');
+        descEl.className = 'text-xs text-slate-600 leading-relaxed';
+        descEl.textContent = op.whatItDoes;
+
+        top.appendChild(header);
+        top.appendChild(descEl);
+
+        const bottom = document.createElement('div');
+        bottom.className = 'space-y-2 pt-2 border-t border-slate-100 text-xs';
+
+        const exRow = document.createElement('div');
+        exRow.className = 'p-2.5 rounded-xl bg-slate-900 text-slate-100 mono text-[11px] space-y-1';
+        exRow.innerHTML = '<div class="text-slate-400">Example: <span class="text-white font-semibold">' + op.example.replace(/\n/g, '; ') + '</span></div>' +
+                          '<div class="text-emerald-400">Result: ' + op.output + '</div>';
+
+        const ruleEl = document.createElement('div');
+        ruleEl.className = 'text-[11px] text-indigo-800 bg-indigo-50/70 px-2.5 py-1.5 rounded-lg border border-indigo-100';
+        ruleEl.textContent = '📌 ' + op.rule;
+
+        bottom.appendChild(exRow);
+        bottom.appendChild(ruleEl);
+
+        card.appendChild(top);
+        card.appendChild(bottom);
+        gridEl.appendChild(card);
+      });
+    }
+
+    function updateLiveOperatorSandbox() {
+      const aInput = document.getElementById('op-input-a');
+      const bInput = document.getElementById('op-input-b');
+      const outGrid = document.getElementById('live-operator-results');
+      if (!aInput || !bInput || !outGrid) return;
+
+      let a = parseInt(aInput.value, 10);
+      let b = parseInt(bInput.value, 10);
+      if (isNaN(a)) a = 0;
+      if (isNaN(b)) b = 0;
+
+      const divInt = b !== 0 ? Math.trunc(a / b) : 'Undefined (Div by 0)';
+      const modInt = b !== 0 ? (a % b) : 'Undefined (Mod by 0)';
+      const divFloat = b !== 0 ? (a / b).toFixed(2) : 'Undefined';
+
+      const cards = [
+        {
+          title: 'Arithmetic Results',
+          color: 'text-amber-300',
+          lines: [
+            `a + b = ${a + b}  |  a - b = ${a - b}`,
+            `a * b = ${a * b}`,
+            `a / b (int) = ${divInt}`,
+            `(float)a / b = ${divFloat}`,
+            `a % b (rem) = ${modInt}`
+          ]
+        },
+        {
+          title: 'Relational (1=True, 0=False)',
+          color: 'text-sky-300',
+          lines: [
+            `a == b  →  ${a === b ? 1 : 0}`,
+            `a != b  →  ${a !== b ? 1 : 0}`,
+            `a > b   →  ${a > b ? 1 : 0}  |  a < b  →  ${a < b ? 1 : 0}`,
+            `a >= b  →  ${a >= b ? 1 : 0}  |  a <= b →  ${a <= b ? 1 : 0}`
+          ]
+        },
+        {
+          title: 'Logical & Ternary',
+          color: 'text-emerald-300',
+          lines: [
+            `(a > 0) && (b > 0) → ${(a > 0 && b > 0) ? 1 : 0}`,
+            `(a > 0) || (b > 0) → ${(a > 0 || b > 0) ? 1 : 0}`,
+            `!a (Logical NOT)   → ${a === 0 ? 1 : 0}`,
+            `(a > b) ? a : b    → ${a > b ? a : b} (Max)`
+          ]
+        },
+        {
+          title: 'Bitwise Operations',
+          color: 'text-purple-300',
+          lines: [
+            `a & b (AND) = ${a & b}`,
+            `a | b (OR)  = ${a | b}`,
+            `a ^ b (XOR) = ${a ^ b}`,
+            `a << 1      = ${a << 1}  |  a >> 1 = ${a >> 1}`
+          ]
+        }
+      ];
+
+      outGrid.innerHTML = '';
+      cards.forEach(c => {
+        const box = document.createElement('div');
+        box.className = 'p-3.5 rounded-xl bg-slate-800/90 border border-slate-700 space-y-1.5';
+        const h = document.createElement('div');
+        h.className = 'font-bold ' + c.color;
+        h.textContent = c.title;
+        box.appendChild(h);
+
+        c.lines.forEach(line => {
+          const d = document.createElement('div');
+          d.className = 'mono text-[11px] text-slate-200';
+          d.textContent = line;
+          box.appendChild(d);
+        });
+        outGrid.appendChild(box);
+      });
+    }
+
+    // =========================================================================
+    // RENDER PART 4: WHILE LOOP DRY-RUN VISUALIZER & QUIZ
+    // =========================================================================
+    function runCDemo() {
+      const inputEl = document.getElementById('c-demo-input');
+      const outEl = document.getElementById('c-demo-output');
+      if (!inputEl || !outEl) return;
+
+      let n = parseInt(inputEl.value, 10);
+      if (isNaN(n) || n < 0) n = 0;
+      if (n > 20) n = 20;
+
+      // Executing pure while-loop logic as taught in 1st semester
+      let i = 1;
+      let fact = 1;
+      let sum = 0;
+      while (i <= n) {
+        fact *= i;
+        sum += i;
+        i++;
+      }
+      const parity = (n % 2 === 0) ? 'EVEN' : 'ODD';
+      outEl.textContent = 'while loop result: n = ' + n + ' (' + parity + ') | Sum (1 to ' + n + ') = ' + sum + ' | Factorial (' + n + '!) = ' + fact;
+    }
+
+    function renderDryRunTable() {
+      const progSelect = document.getElementById('dryrun-program-select');
+      const inputEl = document.getElementById('c-demo-input');
+      const codeBox = document.getElementById('dryrun-code-box');
+      const tbody = document.getElementById('dryrun-table-body');
+      const badge = document.getElementById('dryrun-step-badge');
+      if (!progSelect || !inputEl || !codeBox || !tbody) return;
+
+      const mode = progSelect.value;
+      let n = parseInt(inputEl.value, 10);
+      if (isNaN(n) || n < 1) n = 1;
+      if (n > 12) n = 12;
+
+      if (badge) {
+        badge.textContent = n + ' Iteration(s) + Final False Check';
+      }
+
+      if (mode === 'sum') {
+        codeBox.textContent = `int n = ${n}, i = 1, sum = 0;\nwhile (i <= n) {\n    sum = sum + i;\n    i++;\n}\nprintf("Sum = %d", sum);`;
+      } else if (mode === 'fact') {
+        codeBox.textContent = `int n = ${n}, i = 1, fact = 1;\nwhile (i <= n) {\n    fact = fact * i;\n    i++;\n}\nprintf("Factorial = %d", fact);`;
+      } else if (mode === 'table') {
+        codeBox.textContent = `int n = ${n}, i = 1;\nwhile (i <= 10) {\n    printf("%d x %d = %d\\n", n, i, n * i);\n    i++;\n}`;
+      } else {
+        codeBox.textContent = `int n = ${n}, i = 1;\nif (n % 2 == 0) printf("EVEN\\n");\nelse printf("ODD\\n");\nwhile (i <= n) {\n    printf("%d ", i);\n    i++;\n}`;
+      }
+
+      tbody.innerHTML = '';
+      const limit = (mode === 'table') ? 10 : n;
+      let sum = 0;
+      let fact = 1;
+
+      for (let i = 1; i <= limit; i++) {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-indigo-50/40';
+
+        let actionStr = '';
+        if (mode === 'sum') {
+          const prev = sum;
+          sum += i;
+          actionStr = `sum = ${prev} + ${i} → ${sum}`;
+        } else if (mode === 'fact') {
+          const prev = fact;
+          fact *= i;
+          actionStr = `fact = ${prev} * ${i} → ${fact}`;
+        } else if (mode === 'table') {
+          actionStr = `prints "${n} x ${i} = ${n * i}"`;
+        } else {
+          actionStr = `prints "${i} "`;
+        }
+
+        tr.innerHTML = `
+          <td class="py-2 px-3 font-bold text-slate-800">Iteration ${i} (i = ${i})</td>
+          <td class="py-2 px-3 text-emerald-700 font-semibold">${i} &lt;= ${limit} is TRUE (1)</td>
+          <td class="py-2 px-3 text-indigo-700">${actionStr}</td>
+          <td class="py-2 px-3 text-slate-600">i becomes ${i + 1}</td>
+        `;
+        tbody.appendChild(tr);
+      }
+
+      // Final termination row
+      const endTr = document.createElement('tr');
+      endTr.className = 'bg-rose-50/70 text-rose-900 font-semibold';
+      endTr.innerHTML = `
+        <td class="py-2.5 px-3">Exit Check (i = ${limit + 1})</td>
+        <td class="py-2.5 px-3 text-rose-700">${limit + 1} &lt;= ${limit} is FALSE (0)</td>
+        <td class="py-2.5 px-3" colspan="2">Loop terminates! Execution jumps to line after while { }</td>
+      `;
+      tbody.appendChild(endTr);
+    }
+
+    function renderCQuiz() {
+      const container = document.getElementById('c-quiz-container');
+      const scoreBadge = document.getElementById('quiz-score-badge');
+      if (!container) return;
+      container.innerHTML = '';
+
+      let correctCount = 0;
+      C_QUIZ_QUESTIONS.forEach(q => {
+        if (quizAnswers[q.id] === q.correctIndex) correctCount++;
+      });
+
+      if (scoreBadge) {
+        scoreBadge.textContent = `Score: ${correctCount} / ${C_QUIZ_QUESTIONS.length}`;
+      }
+
+      C_QUIZ_QUESTIONS.forEach(q => {
+        const picked = quizAnswers[q.id];
+        const hasPicked = typeof picked === 'number';
+
+        const card = document.createElement('div');
+        card.className = 'p-4 rounded-2xl border border-slate-200 bg-slate-50/60 flex flex-col justify-between space-y-3';
+
+        const qTitle = document.createElement('div');
+        qTitle.className = 'font-bold text-slate-900 text-xs sm:text-sm';
+        qTitle.textContent = q.question;
+        card.appendChild(qTitle);
+
+        const optsDiv = document.createElement('div');
+        optsDiv.className = 'space-y-1.5';
+
+        q.options.forEach((optText, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          let btnCls = 'w-full text-left px-3 py-2 rounded-xl text-xs font-medium border transition-colors ';
+          if (!hasPicked) {
+            btnCls += 'bg-white border-slate-200 text-slate-700 hover:bg-indigo-50 hover:border-indigo-300';
+          } else if (idx === q.correctIndex) {
+            btnCls += 'bg-emerald-50 border-emerald-400 text-emerald-900 font-bold';
+          } else if (idx === picked && idx !== q.correctIndex) {
+            btnCls += 'bg-rose-50 border-rose-400 text-rose-900 font-semibold';
+          } else {
+            btnCls += 'bg-white/60 border-slate-200 text-slate-400';
+          }
+          btn.className = btnCls;
+          btn.textContent = optText;
+          btn.addEventListener('click', () => {
+            quizAnswers[q.id] = idx;
+            renderCQuiz();
+          });
+          optsDiv.appendChild(btn);
+        });
+
+        card.appendChild(optsDiv);
+
+        if (hasPicked) {
+          const exp = document.createElement('div');
+          const isRight = (picked === q.correctIndex);
+          exp.className = isRight
+            ? 'p-2.5 rounded-xl bg-emerald-100/70 border border-emerald-300 text-emerald-950 text-[11px] leading-relaxed'
+            : 'p-2.5 rounded-xl bg-rose-100/70 border border-rose-300 text-rose-950 text-[11px] leading-relaxed';
+          exp.textContent = (isRight ? '✓ Correct! ' : '✕ Not quite. ') + q.explanation;
+          card.appendChild(exp);
+        }
+
+        container.appendChild(card);
+      });
+    }
+
+    function resetCQuiz() {
+      quizAnswers = {};
+      renderCQuiz();
+      showToast('Quiz reset! Try answering again.');
+    }
+
+    // =========================================================================
+    // CLIPBOARD HELPERS
+    // =========================================================================
     function copyCodeSnippet(code, label) {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(code).then(() => {
@@ -517,33 +1707,17 @@
       document.body.removeChild(ta);
     }
 
-    function runCDemo() {
-      const inputEl = document.getElementById('c-demo-input');
-      const outEl = document.getElementById('c-demo-output');
-      if (!inputEl || !outEl) return;
-
-      let n = parseInt(inputEl.value, 10);
-      if (isNaN(n) || n < 0) n = 0;
-      if (n > 20) n = 20;
-
-      // Executing pure while-loop logic as taught in 1st semester
-      let i = 1;
-      let fact = 1;
-      let sum = 0;
-      while (i <= n) {
-        fact *= i;
-        sum += i;
-        i++;
-      }
-      const parity = (n % 2 === 0) ? 'EVEN' : 'ODD';
-      outEl.textContent = 'while loop result: n = ' + n + ' (' + parity + ') | Sum (1 to ' + n + ') = ' + sum + ' | Factorial (' + n + '!) = ' + fact;
-    }
-
-
-
+    // =========================================================================
+    // INITIALIZE ON LOAD
+    // =========================================================================
     window.addEventListener('DOMContentLoaded', () => {
       renderCTopics();
+      switchConceptCategory('loops');
+      switchOperatorTab('arithmetic');
+      updateLiveOperatorSandbox();
       runCDemo();
+      renderDryRunTable();
+      renderCQuiz();
     });
   </script>
 </body>
