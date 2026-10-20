@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parichit Ponia | B.Tech CSE Portfolio & C Programming Hub</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+
+  <!-- Toast Notification -->
+  <div id="toast-box" class="fixed bottom-5 right-5 z-50 pointer-events-none opacity-0 transition-opacity duration-300">
+    <div class="bg-slate-900 text-white px-4 py-2.5 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2 border border-slate-700">
+      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+      <span id="toast-msg">Copied!</span>
+    </div>
+  </div>
+
+  <!-- Top Navigation Bar (Matching Friend's Portfolio Structure + C Topics Section) -->
+  <header class="bg-slate-900 text-white sticky top-0 z-40 shadow-md">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16">
+        <a href="#home" class="font-extrabold text-lg tracking-tight text-white flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-sm font-bold mono">&lt;/&gt;</span>
+          <span>Parichit Ponia</span>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-200">
+          <a href="#home" class="hover:text-indigo-400 transition-colors">Home</a>
+          <a href="#about" class="hover:text-indigo-400 transition-colors">About</a>
+          <a href="#skills" class="hover:text-indigo-400 transition-colors">Skills</a>
+          <a href="#c-topics" class="text-amber-300 hover:text-amber-200 font-semibold transition-colors">C Programming</a>
+          <a href="#projects" class="hover:text-indigo-400 transition-colors">Projects</a>
+          <a href="#contact" class="hover:text-indigo-400 transition-colors">Contact</a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button type="button" onclick="toggleMobileNav()" class="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-nav" class="hidden md:hidden pb-4 pt-2 border-t border-slate-800 flex flex-col gap-2 text-sm">
+        <a href="#home" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg hover:bg-slate-800">Home</a>
+        <a href="#about" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg hover:bg-slate-800">About</a>
+        <a href="#skills" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg hover:bg-slate-800">Skills</a>
+        <a href="#c-topics" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg text-amber-300 font-semibold hover:bg-slate-800">C Programming Topics</a>
+        <a href="#projects" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg hover:bg-slate-800">Projects</a>
+        <a href="#contact" onclick="closeMobileNav()" class="px-3 py-2 rounded-lg hover:bg-slate-800">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. HERO / INTRODUCTION SECTION -->
+  <section id="home" class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white py-16 sm:py-24 px-4">
+    <div class="max-w-4xl mx-auto text-center space-y-5">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-200 text-xs font-semibold">
+        <span>GLA University • B.Tech CSE (1st Year, 1st Semester)</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
+        Hello, I'm Parichit Ponia 👋
+      </h1>
+
+      <p class="text-lg sm:text-xl text-indigo-200 font-medium">
+        B.Tech CSE 1st Year Student | GLA University
+      </p>
+
+      <p class="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+        Learning Programming &amp; Logic Building 💻 — Focusing on C Language Fundamentals, Syntax, and Problem Solving.
+      </p>
+
+      <div class="pt-4 flex flex-wrap items-center justify-center gap-3">
+        <a href="#c-topics" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow transition-colors">
+          Explore C Programming Notes 📖
+        </a>
+        <a href="#projects" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 transition-colors">
+          View My Projects 🚀
+        </a>
+        <a href="#contact" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm border border-white/20 transition-colors">
+          Contact Me 📬
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Container -->
+  <main class="max-w-5xl w-full mx-auto px-4 sm:px-6 py-12 space-y-16 flex-1">
+
+    <!-- 2. ABOUT ME SECTION -->
+    <section id="about" class="scroll-mt-20">
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+          <span>👨‍🎓</span> About Me
+        </h2>
+        <p class="mt-4 text-slate-700 leading-relaxed text-base">
+          I am <strong>Parichit Ponia</strong>, a first-year <strong>B.Tech Computer Science &amp; Engineering (CSE)</strong> student at <strong>GLA University</strong>. I am passionate about computer programming, software technology, and building clean websites. In my first semester, I am actively learning <strong>C Language</strong> (Variables, Data Types, Conditional Statements, and <code>while</code> Loops) and building a strong programming foundation.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 pt-6 border-t border-slate-100 text-sm">
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div class="text-xs font-semibold text-slate-500 uppercase">Course &amp; Branch</div>
+            <div class="font-bold text-slate-900 mt-0.5">B.Tech CSE (1st Year, Sem 1)</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div class="text-xs font-semibold text-slate-500 uppercase">University</div>
+            <div class="font-bold text-slate-900 mt-0.5">GLA University</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div class="text-xs font-semibold text-slate-500 uppercase">Current Focus</div>
+            <div class="font-bold text-indigo-700 mt-0.5">C Programming &amp; Web Dev</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. MY SKILLS SECTION (C Language Focus) -->
+    <section id="skills" class="scroll-mt-20">
+      <h2 class="text-2xl font-bold text-slate-900 mb-5 flex items-center gap-2">
+        <span>⚡</span> My Skills
+      </h2>
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+          <div class="flex items-center gap-4">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-600 to-blue-700 text-white flex items-center justify-center font-extrabold text-2xl mono shadow-md">
+              C
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="font-extrabold text-slate-900 text-lg">C Language</h3>
+                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">Currently Learning (Sem 1)</span>
+              </div>
+              <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+                Currently studying syllabus up to Loops: Variables, Data Types, Arithmetic/Logical Operators, if-else Conditions, and <code>while</code> Loops.
+              </p>
+            </div>
+          </div>
+          <a href="#c-topics" class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold text-xs border border-indigo-200 transition-colors whitespace-nowrap">
+            View Topics &amp; Code ↓
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-slate-100 text-xs">
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div class="font-bold text-slate-900">Basic Structure &amp; I/O</div>
+            <div class="text-slate-500 mt-0.5">#include, main(), printf, scanf</div>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div class="font-bold text-slate-900">Data Types &amp; Variables</div>
+            <div class="text-slate-500 mt-0.5">int, float, char, format specifiers</div>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div class="font-bold text-slate-900">Decision Making</div>
+            <div class="text-slate-500 mt-0.5">if, if-else, nested if conditions</div>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div class="font-bold text-indigo-700">while Loop (Current Topic)</div>
+            <div class="text-slate-500 mt-0.5">Initialization, Condition, Increment</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. C PROGRAMMING INFORMATION & STUDY HUB SECTION -->
+    <section id="c-topics" class="scroll-mt-20 space-y-6">
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full">1st Semester Study Hub</span>
+            <h2 class="text-2xl font-bold text-slate-900 mt-2">📚 C Programming Important Topics &amp; Code Examples</h2>
+            <p class="text-sm text-slate-600 mt-1">
+              Quick revision notes and working C program examples for B.Tech 1st-year students. Click any topic filter or copy the code snippets.
+            </p>
+          </div>
+        </div>
+
+        <!-- Topic Filter Buttons (Syllabus up to while loop) -->
+        <div class="flex flex-wrap gap-2">
+          <button type="button" onclick="filterCTopics('all')" id="cbtn-all" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white transition-colors">All Topics (6)</button>
+          <button type="button" onclick="filterCTopics('basics')" id="cbtn-basics" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">Basics &amp; Variables</button>
+          <button type="button" onclick="filterCTopics('conditions')" id="cbtn-conditions" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">if-else Conditions</button>
+          <button type="button" onclick="filterCTopics('loops')" id="cbtn-loops" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">while Loops</button>
+        </div>
+
+        <!-- C Programming Topic Cards Grid (Studied So Far: Up to while Loop) -->
+        <div id="c-topics-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Upcoming Syllabus Topics (Will Learn Next) -->
+        <div class="p-5 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-3">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h3 class="font-bold text-slate-900 text-sm sm:text-base flex items-center gap-2">
+              <span>🔜</span> Topics I Will Learn Next (Upcoming in Semester 1)
+            </h3>
+            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300">
+              Next in Class Syllabus
+            </span>
+          </div>
+          <p class="text-xs text-slate-600">
+            In our class so far, we have covered C fundamentals up to the <code class="mono font-semibold">while</code> loop. Here are the upcoming topics I will be learning next:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 pt-1 text-xs">
+            <div class="p-3 rounded-xl bg-white border border-amber-200/80">
+              <div class="font-bold text-slate-900">1. More Loops</div>
+              <div class="text-slate-500 mt-0.5"><code class="mono">do-while</code> &amp; <code class="mono">for</code> loops, pattern printing</div>
+            </div>
+            <div class="p-3 rounded-xl bg-white border border-amber-200/80">
+              <div class="font-bold text-slate-900">2. Arrays &amp; Strings</div>
+              <div class="text-slate-500 mt-0.5">1D &amp; 2D arrays, character strings</div>
+            </div>
+            <div class="p-3 rounded-xl bg-white border border-amber-200/80">
+              <div class="font-bold text-slate-900">3. Functions</div>
+              <div class="text-slate-500 mt-0.5">User-defined functions &amp; recursion</div>
+            </div>
+            <div class="p-3 rounded-xl bg-white border border-amber-200/80">
+              <div class="font-bold text-slate-900">4. Pointers &amp; Structs</div>
+              <div class="text-slate-500 mt-0.5">Memory addresses &amp; structures</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Mini C Output Simulator -->
+        <div class="p-5 rounded-2xl bg-slate-900 text-white space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h3 class="font-bold text-base text-amber-300">⚡ Interactive C Demo: while Loop in Action (Counting &amp; Factorial)</h3>
+              <p class="text-xs text-slate-300">Enter any number below to test the logic of a 1st-semester C lab program right in the browser:</p>
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <input type="number" id="c-demo-input" value="5" min="0" max="20" oninput="runCDemo()" class="w-full sm:w-40 px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white mono text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter n (0-20)">
+            <button type="button" onclick="runCDemo()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-colors">
+              Run C Program Logic ▶
+            </button>
+            <div id="c-demo-output" class="flex-1 px-4 py-2 rounded-xl bg-black/50 border border-slate-800 mono text-xs text-emerald-400">
+              Output: n = 5 is ODD | Factorial (5!) = 120
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. MY PROJECTS SECTION -->
+    <section id="projects" class="scroll-mt-20">
+      <h2 class="text-2xl font-bold text-slate-900 mb-5 flex items-center gap-2">
+        <span>🚀</span> My Projects
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">Web Development</span>
+            <h3 class="font-bold text-slate-900 text-base mt-3">🚀 My First Personal Website</h3>
+            <p class="text-sm text-slate-600 mt-1.5 leading-relaxed">
+              A responsive personal portfolio and C programming study website built using HTML5, CSS3, and JavaScript, hosted on GitHub Pages.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-emerald-700">
+            ✓ Live Project
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">C Programming Lab</span>
+            <h3 class="font-bold text-slate-900 text-base mt-3">💻 C Programming Mini Projects</h3>
+            <p class="text-sm text-slate-600 mt-1.5 leading-relaxed">
+              Collection of 1st-semester C lab programs covering I/O, Even/Odd check, largest of 3 numbers, and while loop series (Multiplication table, Sum of N numbers).
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-indigo-600">
+            <a href="#c-topics" class="hover:underline">See Code Examples Above ↑</a>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full">Upcoming</span>
+            <h3 class="font-bold text-slate-900 text-base mt-3">🔨 More Projects Coming Soon...</h3>
+            <p class="text-sm text-slate-600 mt-1.5 leading-relaxed">
+              Upcoming topics in our syllabus: do-while and for loops, pattern printing, arrays, and functions.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
+            In Progress (Semester 1)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CONTACT ME SECTION -->
+    <section id="contact" class="scroll-mt-20">
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+          <span>📬</span> Contact Me
+        </h2>
+        <p class="text-sm text-slate-600 mt-1">
+          Feel free to reach out for college projects, C programming discussions, or web development collaboration.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <div class="text-xs font-semibold text-slate-500 uppercase">Email</div>
+            <a href="mailto:parichitponia2008@gmail.com" class="text-sm font-bold text-indigo-600 hover:underline break-all mt-1 block">
+              parichitponia2008@gmail.com
+            </a>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <div class="text-xs font-semibold text-slate-500 uppercase">GitHub Profile</div>
+            <a href="https://github.com/parichitponia2008-code" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-indigo-600 hover:underline break-all mt-1 block">
+              github.com/parichitponia2008-code
+            </a>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <div class="text-xs font-semibold text-slate-500 uppercase">GitHub Repository</div>
+            <a href="https://github.com/parichitponia2008-code/unknown" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-indigo-600 hover:underline break-all mt-1 block">
+              parichitponia2008-code/unknown
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800">
+    <div class="max-w-5xl mx-auto px-4">
+      © 2026 Parichit Ponia | B.Tech CSE | GLA University
+    </div>
+  </footer>
+
+  <!-- JavaScript Logic -->
+  <script>
+    const C_TOPICS = [
+      {
+        id: 'topic-1',
+        cat: 'basics',
+        badge: '1. Basic Structure',
+        title: 'Structure of a C Program & Header Files',
+        desc: 'Every program includes header files like <stdio.h> and execution starts inside the main() function.',
+        code: `#include <stdio.h>\n\nint main() {\n    printf("Welcome to C Programming!\\n");\n    printf("Student: Parichit Ponia - GLA University\\n");\n    return 0;\n}`
+      },
+      {
+        id: 'topic-2',
+        cat: 'basics',
+        badge: '2. Data Types & I/O',
+        title: 'Variables, Data Types & scanf() Input',
+        desc: 'Stores numbers and characters in memory. scanf() uses & (address-of) to read inputs from the user.',
+        code: `int roll;\nfloat marks;\nprintf("Enter Roll No and Marks: ");\nscanf("%d %f", &roll, &marks);\nprintf("Roll: %d, Marks: %.2f\\n", roll, marks);`
+      },
+      {
+        id: 'topic-3',
+        cat: 'basics',
+        badge: '3. Operators & Logic',
+        title: 'Arithmetic & Relational Operators',
+        desc: 'Includes operators for math (+, -, *, /, %) and comparison (==, !=, >, <, >=, <=) for condition checking.',
+        code: `int a = 15, b = 4;\nprintf("Sum = %d\\n", a + b);\nprintf("Quotient = %d\\n", a / b);\nprintf("Remainder (Modulus) = %d\\n", a % b);`
+      },
+      {
+        id: 'topic-4',
+        cat: 'conditions',
+        badge: '4. Decision Making',
+        title: 'if-else Conditional Statements',
+        desc: 'Executes different blocks of code based on whether a condition evaluates to true (non-zero) or false (0).',
+        code: `int num = 7;\nif (num % 2 == 0) {\n    printf("%d is Even\\n", num);\n} else {\n    printf("%d is Odd\\n", num);\n}`
+      },
+      {
+        id: 'topic-5',
+        cat: 'loops',
+        badge: '5. while Loop Syntax',
+        title: 'while Loop (Entry-Controlled Loop)',
+        desc: 'A while loop checks the condition first. As long as the condition is true, the loop body continues executing.',
+        code: `// Print numbers from 1 to 5 using while loop\nint i = 1; // 1. Initialization\nwhile (i <= 5) { // 2. Condition\n    printf("%d ", i);\n    i++; // 3. Increment\n}`
+      },
+      {
+        id: 'topic-6',
+        cat: 'loops',
+        badge: '6. while Loop Example',
+        title: 'Sum of First N Numbers using while Loop',
+        desc: 'Standard 1st-semester C lab problem demonstrating accumulation and condition termination with a while loop.',
+        code: `int n = 5, i = 1, sum = 0;\nwhile (i <= n) {\n    sum += i;\n    i++;\n}\nprintf("Sum of first %d natural numbers = %d", n, sum);`
+      }
+    ];
+
+    let currentFilter = 'all';
+    let toastTimer = null;
+
+    function showToast(msg) {
+      const box = document.getElementById('toast-box');
+      const text = document.getElementById('toast-msg');
+      if (!box || !text) return;
+      text.textContent = msg;
+      box.classList.remove('opacity-0');
+      box.classList.add('opacity-100');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        box.classList.remove('opacity-100');
+        box.classList.add('opacity-0');
+      }, 2200);
+    }
+
+    function toggleMobileNav() {
+      const nav = document.getElementById('mobile-nav');
+      if (nav) nav.classList.toggle('hidden');
+    }
+
+    function closeMobileNav() {
+      const nav = document.getElementById('mobile-nav');
+      if (nav) nav.classList.add('hidden');
+    }
+
+    function filterCTopics(cat) {
+      currentFilter = cat;
+      ['all', 'basics', 'conditions', 'loops'].forEach(c => {
+        const btn = document.getElementById('cbtn-' + c);
+        if (btn) {
+          btn.className = (c === cat)
+            ? 'px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white transition-colors'
+            : 'px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors';
+        }
+      });
+      renderCTopics();
+    }
+
+    function renderCTopics() {
+      const grid = document.getElementById('c-topics-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const items = C_TOPICS.filter(t => currentFilter === 'all' || t.cat === currentFilter);
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'rounded-xl border border-slate-200 bg-slate-50/60 p-5 flex flex-col justify-between space-y-3';
+
+        const top = document.createElement('div');
+        top.className = 'space-y-1.5';
+
+        const header = document.createElement('div');
+        header.className = 'flex items-center justify-between';
+
+        const badge = document.createElement('span');
+        badge.className = 'text-xs font-bold text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-200';
+        badge.textContent = item.badge;
+
+        const copyBtn = document.createElement('button');
+        copyBtn.type = 'button';
+        copyBtn.className = 'text-xs font-semibold text-indigo-600 hover:text-indigo-800';
+        copyBtn.textContent = 'Copy Code';
+        copyBtn.addEventListener('click', () => copyCodeSnippet(item.code, item.title));
+
+        header.appendChild(badge);
+        header.appendChild(copyBtn);
+
+        const title = document.createElement('h3');
+        title.className = 'font-bold text-slate-900 text-base pt-1';
+        title.textContent = item.title;
+
+        const desc = document.createElement('p');
+        desc.className = 'text-xs text-slate-600 leading-relaxed';
+        desc.textContent = item.desc;
+
+        top.appendChild(header);
+        top.appendChild(title);
+        top.appendChild(desc);
+
+        const pre = document.createElement('pre');
+        pre.className = 'p-3.5 rounded-xl bg-slate-900 text-slate-100 mono text-xs overflow-x-auto leading-relaxed';
+        pre.textContent = item.code;
+
+        card.appendChild(top);
+        card.appendChild(pre);
+        grid.appendChild(card);
+      });
+    }
+
+    function copyCodeSnippet(code, label) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(() => {
+          showToast('Copied: ' + label);
+        }).catch(() => fallbackCopyText(code, label));
+      } else {
+        fallbackCopyText(code, label);
+      }
+    }
+
+    function fallbackCopyText(code, label) {
+      const ta = document.createElement('textarea');
+      ta.value = code;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('Copied: ' + label);
+      } catch (e) {
+        showToast('Copy not supported');
+      }
+      document.body.removeChild(ta);
+    }
+
+    function runCDemo() {
+      const inputEl = document.getElementById('c-demo-input');
+      const outEl = document.getElementById('c-demo-output');
+      if (!inputEl || !outEl) return;
+
+      let n = parseInt(inputEl.value, 10);
+      if (isNaN(n) || n < 0) n = 0;
+      if (n > 20) n = 20;
+
+      // Executing pure while-loop logic as taught in 1st semester
+      let i = 1;
+      let fact = 1;
+      let sum = 0;
+      while (i <= n) {
+        fact *= i;
+        sum += i;
+        i++;
+      }
+      const parity = (n % 2 === 0) ? 'EVEN' : 'ODD';
+      outEl.textContent = 'while loop result: n = ' + n + ' (' + parity + ') | Sum (1 to ' + n + ') = ' + sum + ' | Factorial (' + n + '!) = ' + fact;
+    }
+
+
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCTopics();
+      runCDemo();
+    });
+  </script>
+</body>
+</html>
